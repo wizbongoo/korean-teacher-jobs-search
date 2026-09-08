@@ -67,6 +67,7 @@ class TestPipeline(unittest.TestCase):
             self.assertTrue(job["title"].strip(), "Title must not be blank")
             self.assertTrue(job["url"].startswith("http"), f"Invalid url: {job['url']}")
             self.assertIn(job["source"], ["국립국어원", "한국어교육바다", "세종학당재단", "다누리", "워크넷"])
+            self.assertIn(job.get("status", "pending"), ["pending", "published", "rejected"])
 
 if __name__ == "__main__":
     unittest.main()

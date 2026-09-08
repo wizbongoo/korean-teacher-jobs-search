@@ -532,29 +532,80 @@ def run_pipeline() -> list[dict]:
     cleaner.print_diagnostic_report()
 
     print("=" * 60)
-    print(f"      [3/3] 최종 데이터 저장 중: {OUTPUT_FILE}")
+    print(f"      [3/3] 운영자 검토 대기(Pending) 데이터 병합 및 저장: {OUTPUT_FILE}")
     print("=" * 60)
+
+    existing_jobs = []
+    if os.path.exists(OUTPUT_FILE):
+        try:
+            with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+                existing_jobs = json.load(f)
+        except Exception as e:
+            print(f" -> [Warning] 기존 데이터 로드 실패: {e}")
+
+    existing_map = {str(j.get("id")): j for j in existing_jobs if "id" in j}
+
+    # Cross-reference published records
+    published_records = {}
+    pub_file = os.path.join(DATA_DIR, "published_kboard.json")
+    if os.path.exists(pub_file):
+        try:
+            with open(pub_file, "r", encoding="utf-8") as pf:
+                published_records = json.load(pf)
+        except Exception:
+            published_records = {}
+
+    merged_jobs = []
+    new_candidate_count = 0
+    retained_count = 0
+
+    for cj in clean_jobs:
+        cid = str(cj.get("id"))
+        if cid in existing_map:
+            # Preserve existing job metadata and operator decisions
+            old_job = existing_map[cid]
+            cj["status"] = old_job.get("status", "pending")
+            cj["kboard_uid"] = old_job.get("kboard_uid")
+            cj["reviewed_at"] = old_job.get("reviewed_at")
+
+            # If it's in published_records, ensure status reflects published
+            if cid in published_records and cj["status"] != "published":
+                cj["status"] = "published"
+                cj["kboard_uid"] = published_records[cid].get("kboard_uid")
+
+            retained_count += 1
+        else:
+            # Newly discovered job
+            if cid in published_records:
+                cj["status"] = "published"
+                cj["kboard_uid"] = published_records[cid].get("kboard_uid")
+                cj["reviewed_at"] = published_records[cid].get("published_at")
+            else:
+                cj["status"] = "pending"
+                cj["kboard_uid"] = None
+                cj["reviewed_at"] = None
+            new_candidate_count += 1
+        merged_jobs.append(cj)
+
+    # Keep any existing jobs that weren't captured in the current crawl
+    current_ids = {str(j.get("id")) for j in merged_jobs}
+    for old_id, old_job in existing_map.items():
+        if old_id not in current_ids:
+            merged_jobs.append(old_job)
 
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(clean_jobs, f, ensure_ascii=False, indent=2)
+        json.dump(merged_jobs, f, ensure_ascii=False, indent=2)
 
-    print(f"-> {len(clean_jobs)}건의 정제된 유효 공고가 성공적으로 저장되었습니다.")
+    pending_total = len([j for j in merged_jobs if j.get("status") == "pending"])
+    pub_total = len([j for j in merged_jobs if j.get("status") == "published"])
+    rej_total = len([j for j in merged_jobs if j.get("status") == "rejected"])
 
-    # 4. 워드프레스 KBoard 신규 공고 자동 동기화
-    enable_kboard = os.getenv("ENABLE_KBOARD_SYNC", "true").lower() in ["true", "1", "yes"]
-    if enable_kboard:
-        print("=" * 60)
-        print("      [4/4] 워드프레스 KBoard 신규 공고 자동 동기화 중...")
-        print("=" * 60)
-        try:
-            from src.poster import sync_jobs_to_kboard
-            pub_stats = sync_jobs_to_kboard(clean_jobs, delay_sec=0.5)
-            print(f"-> KBoard 동기화 결과: 신규 {pub_stats['published']}건 등록, {pub_stats['skipped']}건 기존 유지, {pub_stats['failed']}건 실패")
-        except Exception as e:
-            print(f"-> [Warning] 워드프레스 KBoard 동기화 중 오류 발생: {e}")
+    print(f"-> 총 {len(merged_jobs)}건 저장 완료 (기존 유지: {retained_count}건, 신규 발굴: {new_candidate_count}건)")
+    print(f"-> [상태 요약] 🟡 검토 대기: {pending_total}건 | 🟢 게시 완료: {pub_total}건 | ⚪ 반려: {rej_total}건")
+    print("-> 운영자 승인은 Streamlit 관리자 콘솔(app.py)에서 검토 후 진행됩니다.")
 
-    return clean_jobs
+    return merged_jobs
 
 
 if __name__ == "__main__":

@@ -9,7 +9,10 @@
     "deadline": "2026-09-08",
     "url": "https://kteacher.korean.go.kr/jobsearch/34727",
     "is_closed": false,
-    "created_at": "2026-09-04"
+    "created_at": "2026-09-04",
+    "status": "published",
+    "kboard_uid": 5,
+    "reviewed_at": "2026-09-08 14:57:36"
   },
   {
     "id": "kteacher_34613",
@@ -21,7 +24,10 @@
     "deadline": "2026-09-17",
     "url": "https://kteacher.korean.go.kr/jobsearch/34613",
     "is_closed": false,
-    "created_at": "2026-09-03"
+    "created_at": "2026-09-03",
+    "status": "published",
+    "kboard_uid": 6,
+    "reviewed_at": "2026-09-08 14:59:50"
   },
   {
     "id": "kteacher_34564",
@@ -33,7 +39,10 @@
     "deadline": "2026-09-15",
     "url": "https://kteacher.korean.go.kr/jobsearch/34564",
     "is_closed": false,
-    "created_at": "2026-09-02"
+    "created_at": "2026-09-02",
+    "status": "published",
+    "kboard_uid": 7,
+    "reviewed_at": "2026-09-08 15:03:22"
   },
   {
     "id": "kteacher_34469",
@@ -45,7 +54,10 @@
     "deadline": "2026-09-18",
     "url": "https://kteacher.korean.go.kr/jobsearch/34469",
     "is_closed": false,
-    "created_at": "2026-09-01"
+    "created_at": "2026-09-01",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kteacher_34046",
@@ -57,7 +69,10 @@
     "deadline": "2026-10-13",
     "url": "https://kteacher.korean.go.kr/jobsearch/34046",
     "is_closed": false,
-    "created_at": "2026-08-24"
+    "created_at": "2026-08-24",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kteacher_34008",
@@ -69,7 +84,10 @@
     "deadline": "2026-09-12",
     "url": "https://kteacher.korean.go.kr/jobsearch/34008",
     "is_closed": false,
-    "created_at": "2026-08-13"
+    "created_at": "2026-08-13",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kteacher_33992",
@@ -81,7 +99,10 @@
     "deadline": "2026-09-09",
     "url": "https://kteacher.korean.go.kr/jobsearch/33992",
     "is_closed": false,
-    "created_at": "2026-08-10"
+    "created_at": "2026-08-10",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kteacher_33333",
@@ -93,7 +114,10 @@
     "deadline": "상시채용",
     "url": "https://kteacher.korean.go.kr/jobsearch/33333",
     "is_closed": false,
-    "created_at": "2026-06-12"
+    "created_at": "2026-06-12",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_643",
@@ -105,7 +129,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=643",
     "is_closed": false,
-    "created_at": "2026-08-19"
+    "created_at": "2026-08-19",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_601",
@@ -117,7 +144,10 @@
     "deadline": "2027-08-31",
     "url": "https://kleocean.com/?kboard_content_redirect=601",
     "is_closed": false,
-    "created_at": "2026-07-13"
+    "created_at": "2026-07-13",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_599",
@@ -129,7 +159,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=599",
     "is_closed": false,
-    "created_at": "2026-07-07"
+    "created_at": "2026-07-07",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_555",
@@ -141,7 +174,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=555",
     "is_closed": false,
-    "created_at": "2026-06-01"
+    "created_at": "2026-06-01",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_547",
@@ -153,7 +189,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=547",
     "is_closed": false,
-    "created_at": "2026-05-20"
+    "created_at": "2026-05-20",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_529",
@@ -165,7 +204,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=529",
     "is_closed": false,
-    "created_at": "2026-04-24"
+    "created_at": "2026-04-24",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_502",
@@ -177,7 +219,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=502",
     "is_closed": false,
-    "created_at": "2026-03-20"
+    "created_at": "2026-03-20",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_470",
@@ -189,7 +234,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=470",
     "is_closed": false,
-    "created_at": "2026-02-25"
+    "created_at": "2026-02-25",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_468",
@@ -201,7 +249,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=468",
     "is_closed": false,
-    "created_at": "2026-02-24"
+    "created_at": "2026-02-24",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_456",
@@ -213,7 +264,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=456",
     "is_closed": false,
-    "created_at": "2026-02-10"
+    "created_at": "2026-02-10",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_408",
@@ -225,7 +279,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=408",
     "is_closed": false,
-    "created_at": "2026-01-12"
+    "created_at": "2026-01-12",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_392",
@@ -237,7 +294,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=392",
     "is_closed": false,
-    "created_at": "2026-01-05"
+    "created_at": "2026-01-05",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_386",
@@ -249,7 +309,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=386",
     "is_closed": false,
-    "created_at": "2025-12-23"
+    "created_at": "2025-12-23",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_385",
@@ -261,7 +324,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=385",
     "is_closed": false,
-    "created_at": "2025-12-17"
+    "created_at": "2025-12-17",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_382",
@@ -273,7 +339,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=382",
     "is_closed": false,
-    "created_at": "2025-12-10"
+    "created_at": "2025-12-10",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_368",
@@ -285,7 +354,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=368",
     "is_closed": false,
-    "created_at": "2025-11-14"
+    "created_at": "2025-11-14",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_362",
@@ -297,7 +369,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=362",
     "is_closed": false,
-    "created_at": "2025-10-22"
+    "created_at": "2025-10-22",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_342",
@@ -309,7 +384,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=342",
     "is_closed": false,
-    "created_at": "2025-08-11"
+    "created_at": "2025-08-11",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_650",
@@ -321,7 +399,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=650",
     "is_closed": false,
-    "created_at": "2026-09-07"
+    "created_at": "2026-09-07",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_649",
@@ -333,7 +414,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=649",
     "is_closed": false,
-    "created_at": "2026-09-07"
+    "created_at": "2026-09-07",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_647",
@@ -345,7 +429,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=647",
     "is_closed": false,
-    "created_at": "2026-09-07"
+    "created_at": "2026-09-07",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_646",
@@ -357,7 +444,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=646",
     "is_closed": false,
-    "created_at": "2026-09-07"
+    "created_at": "2026-09-07",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_641",
@@ -369,7 +459,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=641",
     "is_closed": false,
-    "created_at": "2026-08-19"
+    "created_at": "2026-08-19",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_640",
@@ -381,7 +474,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=640",
     "is_closed": false,
-    "created_at": "2026-08-19"
+    "created_at": "2026-08-19",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_639",
@@ -393,7 +489,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=639",
     "is_closed": false,
-    "created_at": "2026-08-19"
+    "created_at": "2026-08-19",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_638",
@@ -405,7 +504,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=638",
     "is_closed": false,
-    "created_at": "2026-08-19"
+    "created_at": "2026-08-19",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_637",
@@ -417,7 +519,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=637",
     "is_closed": false,
-    "created_at": "2026-08-19"
+    "created_at": "2026-08-19",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_636",
@@ -429,7 +534,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=636",
     "is_closed": false,
-    "created_at": "2026-08-19"
+    "created_at": "2026-08-19",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_635",
@@ -441,7 +549,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=635",
     "is_closed": false,
-    "created_at": "2026-08-10"
+    "created_at": "2026-08-10",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_634",
@@ -453,7 +564,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=634",
     "is_closed": false,
-    "created_at": "2026-08-10"
+    "created_at": "2026-08-10",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_633",
@@ -465,7 +579,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=633",
     "is_closed": false,
-    "created_at": "2026-08-10"
+    "created_at": "2026-08-10",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_632",
@@ -477,7 +594,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=632",
     "is_closed": false,
-    "created_at": "2026-08-10"
+    "created_at": "2026-08-10",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_631",
@@ -489,7 +609,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=631",
     "is_closed": false,
-    "created_at": "2026-08-02"
+    "created_at": "2026-08-02",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_630",
@@ -501,7 +624,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=630",
     "is_closed": false,
-    "created_at": "2026-08-02"
+    "created_at": "2026-08-02",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_629",
@@ -513,7 +639,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=629",
     "is_closed": false,
-    "created_at": "2026-08-02"
+    "created_at": "2026-08-02",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_628",
@@ -525,7 +654,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=628",
     "is_closed": false,
-    "created_at": "2026-08-02"
+    "created_at": "2026-08-02",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_627",
@@ -537,7 +669,10 @@
     "deadline": "상시채용",
     "url": "https://kleocean.com/?kboard_content_redirect=627",
     "is_closed": false,
-    "created_at": "2026-08-02"
+    "created_at": "2026-08-02",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "ksif_9220000008034",
@@ -549,7 +684,10 @@
     "deadline": "상시채용",
     "url": "https://www.ksif.or.kr/cop/bbs/selectBoardArticle.do?nttId=9220000008034&bbsId=BBSMSTR_000000000001&pageIndex=1&menuNo=30101710",
     "is_closed": false,
-    "created_at": "2026-06-25"
+    "created_at": "2026-06-25",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "ksif_9220000007993",
@@ -561,7 +699,10 @@
     "deadline": "상시채용",
     "url": "https://www.ksif.or.kr/cop/bbs/selectBoardArticle.do?nttId=9220000007993&bbsId=BBSMSTR_000000000001&pageIndex=1&menuNo=30101710",
     "is_closed": false,
-    "created_at": "2026-06-04"
+    "created_at": "2026-06-04",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "ksif_9220000007992",
@@ -573,7 +714,10 @@
     "deadline": "상시채용",
     "url": "https://www.ksif.or.kr/cop/bbs/selectBoardArticle.do?nttId=9220000007992&bbsId=BBSMSTR_000000000001&pageIndex=1&menuNo=30101710",
     "is_closed": false,
-    "created_at": "2026-06-04"
+    "created_at": "2026-06-04",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "ksif_9220000007943",
@@ -585,7 +729,10 @@
     "deadline": "상시채용",
     "url": "https://www.ksif.or.kr/cop/bbs/selectBoardArticle.do?nttId=9220000007943&bbsId=BBSMSTR_000000000001&pageIndex=1&menuNo=30101710",
     "is_closed": false,
-    "created_at": "2026-05-26"
+    "created_at": "2026-05-26",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "ksif_9220000007641",
@@ -597,7 +744,10 @@
     "deadline": "상시채용",
     "url": "https://www.ksif.or.kr/cop/bbs/selectBoardArticle.do?nttId=9220000007641&bbsId=BBSMSTR_000000000001&pageIndex=1&menuNo=30101710",
     "is_closed": false,
-    "created_at": "2026-01-06"
+    "created_at": "2026-01-06",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "ksif_9220000007584",
@@ -609,7 +759,10 @@
     "deadline": "상시채용",
     "url": "https://www.ksif.or.kr/cop/bbs/selectBoardArticle.do?nttId=9220000007584&bbsId=BBSMSTR_000000000001&pageIndex=1&menuNo=30101710",
     "is_closed": false,
-    "created_at": "2025-12-09"
+    "created_at": "2025-12-09",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "danuri_165877",
@@ -621,7 +774,10 @@
     "deadline": "2026-12-31",
     "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=165877&cpage=3&rows=10&condition=&keyword=한국어&area=&area_detail=&search_year=&search_month=&search_recruit_stat=",
     "is_closed": false,
-    "created_at": "2026-03-11"
+    "created_at": "2026-03-11",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "danuri_169117",
@@ -633,7 +789,10 @@
     "deadline": "2026-09-21",
     "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=169117&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
     "is_closed": false,
-    "created_at": "2026-09-07"
+    "created_at": "2026-09-07",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "danuri_169027",
@@ -645,7 +804,10 @@
     "deadline": "2026-09-16",
     "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=169027&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
     "is_closed": false,
-    "created_at": "2026-09-02"
+    "created_at": "2026-09-02",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "danuri_168997",
@@ -657,7 +819,10 @@
     "deadline": "2026-09-18",
     "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=168997&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
     "is_closed": false,
-    "created_at": "2026-09-01"
+    "created_at": "2026-09-01",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "danuri_168926",
@@ -669,7 +834,10 @@
     "deadline": "2026-09-13",
     "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=168926&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
     "is_closed": false,
-    "created_at": "2026-08-27"
+    "created_at": "2026-08-27",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "danuri_168236",
@@ -681,7 +849,10 @@
     "deadline": "2026-12-31",
     "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=168236&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
     "is_closed": false,
-    "created_at": "2026-07-14"
+    "created_at": "2026-07-14",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "worknet_51296315",
@@ -693,7 +864,10 @@
     "deadline": "상시채용",
     "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=51296315",
     "is_closed": false,
-    "created_at": "2026-07-22"
+    "created_at": "2026-07-22",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "worknet_K150012607150049",
@@ -705,6 +879,9 @@
     "deadline": "2026-09-14",
     "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K150012607150049",
     "is_closed": false,
-    "created_at": "2026-07-15"
+    "created_at": "2026-07-15",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   }
 ]

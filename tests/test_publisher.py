@@ -50,5 +50,50 @@ class TestPublisher(unittest.TestCase):
             del publisher.published_records["test_job_123"]
             publisher._save_published_records()
 
+    @patch("src.poster.post_job_opening")
+    @patch("src.poster.save_jobs_file")
+    @patch("src.poster.load_jobs_file")
+    def test_operator_approval_workflow(self, mock_load, mock_save, mock_post):
+        mock_jobs = [
+            {
+                "id": "pending_1",
+                "source": "국립국어원",
+                "title": "대기 공고 1",
+                "organization": "테스트기관",
+                "location": "서울",
+                "grade": "2급",
+                "deadline": "2026-09-30",
+                "url": "https://example.com/1",
+                "is_closed": False,
+                "created_at": "2026-09-08",
+                "status": "pending",
+                "kboard_uid": None,
+                "reviewed_at": None
+            }
+        ]
+        mock_load.return_value = mock_jobs
+        mock_post.return_value = {"status": "success", "kboard_uid": 888}
+
+        from src.poster import approve_and_publish_job, reject_job, restore_to_pending
+        
+        # 1. Test approve_and_publish_job
+        res = approve_and_publish_job("pending_1")
+        self.assertEqual(res["status"], "success")
+        self.assertEqual(res["kboard_uid"], 888)
+        self.assertEqual(mock_jobs[0]["status"], "published")
+        self.assertIsNotNone(mock_jobs[0]["reviewed_at"])
+
+        # 2. Test reject_job
+        rej_res = reject_job("pending_1")
+        self.assertTrue(rej_res)
+        self.assertEqual(mock_jobs[0]["status"], "rejected")
+
+        # 3. Test restore_to_pending
+        rst_res = restore_to_pending("pending_1")
+        self.assertTrue(rst_res)
+        self.assertEqual(mock_jobs[0]["status"], "pending")
+        self.assertIsNone(mock_jobs[0]["reviewed_at"])
+
 if __name__ == "__main__":
     unittest.main()
+

@@ -150,6 +150,31 @@ def format_job_html(job: Dict[str, Any]) -> str:
     return html
 
 
+JOBS_FILE = os.path.join(DATA_DIR, "jobs.json")
+
+
+def load_jobs_file() -> List[Dict[str, Any]]:
+    """Load jobs data from jobs.json."""
+    if not os.path.exists(JOBS_FILE):
+        return []
+    try:
+        with open(JOBS_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"[Warning] Failed to load jobs file: {e}")
+        return []
+
+
+def save_jobs_file(jobs: List[Dict[str, Any]]):
+    """Save jobs data to jobs.json."""
+    os.makedirs(DATA_DIR, exist_ok=True)
+    try:
+        with open(JOBS_FILE, "w", encoding="utf-8") as f:
+            json.dump(jobs, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"[Warning] Failed to save jobs file: {e}")
+
+
 def load_published_records() -> Dict[str, Any]:
     """Load history of previously published jobs to prevent duplicates."""
     if not os.path.exists(PUBLISHED_FILE):
@@ -169,6 +194,154 @@ def save_published_records(records: Dict[str, Any]):
             json.dump(records, f, ensure_ascii=False, indent=2)
     except Exception as e:
         print(f"[Warning] Failed to save published records: {e}")
+
+
+# Alias for backward compatibility
+format_kboard_content = format_job_html
+
+
+def approve_and_publish_job(
+    job_id: str,
+    custom_title: Optional[str] = None,
+    custom_org: Optional[str] = None,
+    custom_deadline: Optional[str] = None,
+    custom_location: Optional[str] = None,
+    custom_grade: Optional[str] = None
+) -> Dict[str, Any]:
+    """
+    Operator approves a pending job. Applies any edits made by the operator,
+    posts the job to WordPress KBoard, and updates the job's status to 'published'.
+    """
+    jobs = load_jobs_file()
+    job = None
+    job_idx = -1
+    for i, j in enumerate(jobs):
+        if str(j.get("id")) == str(job_id):
+            job = j
+            job_idx = i
+            break
+
+    if not job:
+        return {"status": "error", "message": f"공고 ID '{job_id}'를 찾을 수 없습니다."}
+
+    # If already published, return existing status
+    if job.get("status") == "published" and job.get("kboard_uid"):
+        return {
+            "status": "already_published",
+            "kboard_uid": job.get("kboard_uid"),
+            "message": "이미 KBoard에 게시된 공고입니다."
+        }
+
+    # Apply operator overrides if provided
+    if custom_title is not None and custom_title.strip():
+        job["title"] = custom_title.strip()
+    if custom_org is not None and custom_org.strip():
+        job["organization"] = custom_org.strip()
+    if custom_deadline is not None and custom_deadline.strip():
+        job["deadline"] = custom_deadline.strip()
+    if custom_location is not None and custom_location.strip():
+        job["location"] = custom_location.strip()
+    if custom_grade is not None and custom_grade.strip():
+        job["grade"] = custom_grade.strip()
+
+    title = job.get("title", "")
+    content = format_job_html(job)
+
+    # Post to WordPress KBoard
+    res = post_job_opening(title=title, content=content, board_id=BOARD_ID)
+
+    if res and res.get("status") == "success":
+        uid = res.get("kboard_uid") or res.get("post_id")
+        now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        job["status"] = "published"
+        job["kboard_uid"] = uid
+        job["reviewed_at"] = now_str
+        jobs[job_idx] = job
+        save_jobs_file(jobs)
+
+        # Update published_kboard.json
+        pub_records = load_published_records()
+        pub_records[str(job_id)] = {
+            "kboard_uid": uid,
+            "title": title,
+            "source": job.get("source"),
+            "published_at": now_str
+        }
+        save_published_records(pub_records)
+
+        return {
+            "status": "success",
+            "kboard_uid": uid,
+            "message": f"KBoard에 성공적으로 게시되었습니다. (UID: {uid})"
+        }
+    else:
+        err_msg = res.get("message", "전송 실패") if res else "서버 응답 없음"
+        return {
+            "status": "error",
+            "message": f"KBoard 전송 실패: {err_msg}"
+        }
+
+
+def reject_job(job_id: str) -> bool:
+    """
+    Operator rejects/excludes a job. Updates status to 'rejected'.
+    """
+    jobs = load_jobs_file()
+    updated = False
+    for job in jobs:
+        if str(job.get("id")) == str(job_id):
+            job["status"] = "rejected"
+            job["reviewed_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            updated = True
+            break
+    if updated:
+        save_jobs_file(jobs)
+    return updated
+
+
+def restore_to_pending(job_id: str) -> bool:
+    """
+    Restore a rejected or published job back to 'pending' review state.
+    """
+    jobs = load_jobs_file()
+    updated = False
+    for job in jobs:
+        if str(job.get("id")) == str(job_id):
+            job["status"] = "pending"
+            job["reviewed_at"] = None
+            updated = True
+            break
+    if updated:
+        save_jobs_file(jobs)
+    return updated
+
+
+def batch_approve_jobs(job_ids: List[str], delay_sec: float = 0.5) -> Dict[str, Any]:
+    """
+    Batch approve and publish multiple jobs to KBoard.
+    """
+    stats = {
+        "total": len(job_ids),
+        "published": 0,
+        "failed": 0,
+        "already_published": 0,
+        "details": []
+    }
+    for idx, jid in enumerate(job_ids):
+        res = approve_and_publish_job(jid)
+        st_code = res.get("status")
+        if st_code == "success":
+            stats["published"] += 1
+        elif st_code == "already_published":
+            stats["already_published"] += 1
+        else:
+            stats["failed"] += 1
+        stats["details"].append({"id": jid, "result": res})
+
+        if idx < len(job_ids) - 1 and delay_sec > 0:
+            time.sleep(delay_sec)
+    return stats
 
 
 def sync_jobs_to_kboard(jobs: List[Dict[str, Any]], limit: Optional[int] = None, delay_sec: float = 1.0) -> Dict[str, int]:
@@ -228,3 +401,4 @@ if __name__ == "__main__":
         with open(jobs_file, "r", encoding="utf-8") as f:
             clean_jobs = json.load(f)
         sync_jobs_to_kboard(clean_jobs, limit=1)
+

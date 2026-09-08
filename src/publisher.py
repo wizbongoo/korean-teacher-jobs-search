@@ -238,3 +238,15 @@ class WordPressPublisher:
                 time.sleep(delay_sec)
 
         return stats
+
+
+# Re-export approval/review helpers from poster for convenience
+from src.poster import (
+    approve_and_publish_job,
+    reject_job,
+    restore_to_pending,
+    batch_approve_jobs,
+    load_jobs_file,
+    save_jobs_file
+)
+
