@@ -109,6 +109,7 @@ st.markdown("""
     .badge-src-kleocean { background-color: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
     .badge-src-ksif     { background-color: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
     .badge-src-danuri   { background-color: #faf5ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+    .badge-src-worknet  { background-color: #f0fdfa; color: #0f766e; border: 1px solid #99f6e4; }
 
     .badge-dday-danger { background-color: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; font-weight: 800; }
     .badge-dday-warn   { background-color: #fffbeb; color: #b45309; border: 1px solid #fde68a; font-weight: 800; }
@@ -207,7 +208,7 @@ def main():
     st.markdown("""
     <div class="main-header">
         <h1>📚 한국어교원 채용 대시보드</h1>
-        <p>국립국어원 · KLE Ocean · 세종학당재단 · 다누리 4대 포털 실시간 정제 채용 정보</p>
+        <p>국립국어원 · KLE Ocean · 세종학당재단 · 다누리 · 워크넷 5대 포털 실시간 정제 채용 정보</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -349,6 +350,7 @@ def main():
         "한국어교육바다": "badge-src-kleocean",
         "세종학당재단": "badge-src-ksif",
         "다누리": "badge-src-danuri",
+        "워크넷": "badge-src-worknet",
     }
 
     # 1. Card View
@@ -434,7 +436,7 @@ def main():
 
     # Footer
     st.markdown("---")
-    st.caption("🤖 한국어교원 채용 대시보드 | 국립국어원 · 한국어교육바다 · 세종학당재단 · 다누리 포털 데이터 실시간 연동")
+    st.caption("🤖 한국어교원 채용 대시보드 | 국립국어원 · 한국어교육바다 · 세종학당재단 · 다누리 · 워크넷 5대 포털 데이터 실시간 연동")
 
 if __name__ == "__main__":
     main()

@@ -13,11 +13,16 @@ EXCLUDE_TITLE_KEYWORDS = [
 NON_TEACHER_KEYWORDS = [
     "아이돌봄", "조리사", "영양사", "환경미화", "시설관리",
     "보듬매니저", "공동육아", "가족상담", "사회복지사", "회계직", "차량기사",
-    "상담사", "상담전문"
+    "상담사", "상담전문", "조공", "용접", "도장", "단순노무", "지게차", "운전원",
+    "미화원", "생산직", "배송기사", "선원", "요양보호사"
 ]
 
 TEACHER_MUST_HAVE_KEYWORDS = [
     "한국어", "한국학", "korean", "언어발달", "다문화언어", "토픽", "topik", "교원", "강사", "교수"
+]
+
+WORKNET_TEACHING_KEYWORDS = [
+    "강사", "교원", "교사", "지도사", "교수", "학당", "교육"
 ]
 
 class JobDataCleaner:
@@ -44,21 +49,25 @@ class JobDataCleaner:
     def is_relevant_teacher_job(self, title: str, source: str, organization: str = "") -> bool:
         """
         Check if the job is specifically related to Korean teaching / language education.
-        Crucial for general boards like Danuri or KSIF general staff.
+        Crucial for general boards like Danuri, Worknet, or KSIF general staff.
         """
         title_lower = title.lower()
         org_lower = organization.lower()
         
-        # Check if non-teaching keyword appears without teacher qualification
+        # Check if non-teaching keyword appears
         for non_kw in NON_TEACHER_KEYWORDS:
-            if non_kw in title_lower and "한국어" not in title_lower:
+            if non_kw in title_lower:
                 return False
 
-        # In Danuri and general portals, we MUST verify Korean teaching relevance
-        if source in ["다누리", "세종학당재단"]:
+        # In Danuri, Worknet and general portals, we MUST verify Korean teaching relevance
+        if source in ["다누리", "세종학당재단", "워크넷"]:
             has_teacher_kw = any(kw in title_lower for kw in TEACHER_MUST_HAVE_KEYWORDS)
             if not has_teacher_kw:
                 return False
+            if source == "워크넷":
+                has_worknet_teaching = any(kw in title_lower for kw in WORKNET_TEACHING_KEYWORDS)
+                if not has_worknet_teaching:
+                    return False
                 
         return True
 

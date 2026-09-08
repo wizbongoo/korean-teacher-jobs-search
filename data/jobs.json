@@ -682,5 +682,29 @@
     "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=168236&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
     "is_closed": false,
     "created_at": "2026-07-14"
+  },
+  {
+    "id": "worknet_51296315",
+    "source": "워크넷",
+    "title": "[캐럿글로벌] 외국인 대상한국어강사",
+    "organization": "㈜캐럿글로벌",
+    "location": "서울",
+    "grade": "무관/미지정",
+    "deadline": "상시채용",
+    "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=51296315",
+    "is_closed": false,
+    "created_at": "2026-07-22"
+  },
+  {
+    "id": "worknet_K150012607150049",
+    "source": "워크넷",
+    "title": "[해찬나래 어린이집]한국어강사모집",
+    "organization": "해찬나래어린이집",
+    "location": "인천",
+    "grade": "무관/미지정",
+    "deadline": "2026-09-14",
+    "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K150012607150049",
+    "is_closed": false,
+    "created_at": "2026-07-15"
   }
 ]

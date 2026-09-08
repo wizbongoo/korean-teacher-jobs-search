@@ -3,6 +3,7 @@ import os
 import re
 import sys
 from datetime import datetime
+import requests
 from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
 
@@ -360,16 +361,124 @@ class DanuriCrawler:
         }
 
 
+class WorknetCrawler:
+    """Crawler for Worknet (고용24) job postings using session-based form search."""
+    BASE_URL = "https://www.work24.go.kr/wk/a/b/1200/retriveDtlEmpSrchList.do"
+    POST_URL = "https://www.work24.go.kr/wk/a/b/1200/retriveDtlEmpSrchListInPost.do"
+    DETAIL_URL = "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo={wantedAuthNo}"
+
+    def __init__(self):
+        self.session = requests.Session()
+        self.session.headers.update({
+            "User-Agent": (
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                "AppleWebKit/537.36 (KHTML, like Gecko) "
+                "Chrome/128.0.0.0 Safari/537.36"
+            ),
+            "Referer": self.BASE_URL,
+            "Origin": "https://www.work24.go.kr",
+        })
+
+    def crawl(self) -> list[dict]:
+        jobs = []
+        try:
+            resp = self.session.get(self.BASE_URL, timeout=15)
+            soup = BeautifulSoup(resp.content.decode("utf-8", "ignore"), "html.parser")
+            mform = soup.select_one("form#mForm")
+            if not mform:
+                return jobs
+
+            base_payload = {}
+            for inp in mform.find_all("input"):
+                name = inp.get("name")
+                if name:
+                    base_payload[name] = inp.get("value", "")
+
+            keywords = ["한국어강사", "한국어교원", "한국어교사", "한국어교육", "다문화 한국어"]
+            seen_ids = set()
+
+            for kw in keywords:
+                payload = base_payload.copy()
+                payload["srcKeyword"] = kw
+                payload["keyword"] = kw
+                payload["srckeywordWantedTitle"] = "Y"
+                payload["keywordWantedTitle"] = "Y"
+
+                try:
+                    post_resp = self.session.post(self.POST_URL, data=payload, timeout=15)
+                    post_soup = BeautifulSoup(post_resp.content.decode("utf-8", "ignore"), "html.parser")
+                    links = post_soup.select("a[href*='empDetailAuthView']")
+
+                    for a in links:
+                        href = a.get("href", "")
+                        title = a.get_text(strip=True)
+                        if not title:
+                            continue
+
+                        m = re.search(r"wantedAuthNo=([A-Za-z0-9]+)", href)
+                        if not m:
+                            continue
+                        auth_no = m.group(1)
+                        if auth_no in seen_ids:
+                            continue
+                        seen_ids.add(auth_no)
+
+                        tr = a.find_parent("tr")
+                        org = "워크넷 구인처"
+                        loc_text = ""
+                        deadline_str = "상시채용"
+                        created_str = datetime.now().strftime("%Y-%m-%d")
+
+                        if tr:
+                            tds = tr.find_all("td")
+                            if len(tds) > 0:
+                                cp_tag = tds[0].select_one("a.cp_name, .cp_name, strong")
+                                if cp_tag:
+                                    org = cp_tag.get_text(strip=True)
+                            if len(tds) > 1:
+                                loc_text = tds[1].get_text(" ", strip=True)
+                            if len(tds) > 2:
+                                date_td_text = tds[2].get_text(" ", strip=True)
+                                dl_match = re.search(r"마감일\s*:\s*(\d{4}[-./]\d{1,2}[-./]\d{1,2})", date_td_text)
+                                if dl_match:
+                                    deadline_str = parse_date(dl_match.group(1))
+                                cr_match = re.search(r"등록일\s*:\s*(\d{4}[-./]\d{1,2}[-./]\d{1,2})", date_td_text)
+                                if cr_match:
+                                    created_str = parse_date(cr_match.group(1))
+
+                        full_url = self.DETAIL_URL.format(wantedAuthNo=auth_no)
+                        combined_text = f"{title} {loc_text}"
+                        job = {
+                            "id": f"worknet_{auth_no}",
+                            "source": "워크넷",
+                            "title": title,
+                            "organization": org,
+                            "location": extract_location(combined_text),
+                            "grade": extract_grade(combined_text),
+                            "deadline": deadline_str,
+                            "url": full_url,
+                            "is_closed": False,
+                            "created_at": created_str,
+                        }
+                        jobs.append(job)
+                except Exception as e:
+                    print(f" -> [Warning] 워크넷 '{kw}' 검색 실패: {e}")
+        except Exception as e:
+            print(f" -> [Error] 워크넷 초기화 실패: {e}")
+
+        return jobs
+
+
 def run_pipeline() -> list[dict]:
     """Execute all crawlers, clean data, and save to jobs.json."""
     print("=" * 60)
-    print("      [1/3] 한국어교원 채용 사이트 4개 수집 시작...")
+    print("      [1/3] 한국어교원 채용 사이트 5개 수집 시작...")
     print("=" * 60)
 
     raw_jobs = []
 
     # 1. 국립국어원
-    print("[1/4] 국립국어원 한국어교원 구인게시판 수집 중...")
+    print("[1/5] 국립국어원 한국어교원 구인게시판 수집 중...")
     try:
         kteacher_jobs = KTeacherCrawler().crawl(max_pages=5)
         print(f" -> 국립국어원 수집 완료: {len(kteacher_jobs)}건")
@@ -378,7 +487,7 @@ def run_pipeline() -> list[dict]:
         print(f" -> [Error] 국립국어원 수집 실패: {e}")
 
     # 2. KLE Ocean
-    print("[2/4] 한국어교육바다 (KLE Ocean) RSS 피드 수집 중...")
+    print("[2/5] 한국어교육바다 (KLE Ocean) RSS 피드 수집 중...")
     try:
         kle_jobs = KLEOceanCrawler().crawl()
         print(f" -> KLE Ocean 수집 완료: {len(kle_jobs)}건")
@@ -387,7 +496,7 @@ def run_pipeline() -> list[dict]:
         print(f" -> [Error] KLE Ocean 수집 실패: {e}")
 
     # 3. 세종학당재단
-    print("[3/4] 세종학당재단 채용정보 수집 중...")
+    print("[3/5] 세종학당재단 채용정보 수집 중...")
     try:
         ksif_jobs = KSIFCrawler().crawl()
         print(f" -> 세종학당재단 수집 완료: {len(ksif_jobs)}건")
@@ -396,13 +505,22 @@ def run_pipeline() -> list[dict]:
         print(f" -> [Error] 세종학당재단 수집 실패: {e}")
 
     # 4. 다누리
-    print("[4/4] 다누리(다문화가족포털) 한국어 구인공고 수집 중...")
+    print("[4/5] 다누리(다문화가족포털) 한국어 구인공고 수집 중...")
     try:
         danuri_jobs = DanuriCrawler().crawl(max_pages=5)
         print(f" -> 다누리 수집 완료: {len(danuri_jobs)}건")
         raw_jobs.extend(danuri_jobs)
     except Exception as e:
         print(f" -> [Error] 다누리 수집 실패: {e}")
+
+    # 5. 워크넷 (고용24)
+    print("[5/5] 워크넷 (고용24) 한국어교원/강사 구인공고 수집 중...")
+    try:
+        worknet_jobs = WorknetCrawler().crawl()
+        print(f" -> 워크넷 수집 완료: {len(worknet_jobs)}건")
+        raw_jobs.extend(worknet_jobs)
+    except Exception as e:
+        print(f" -> [Error] 워크넷 수집 실패: {e}")
 
     print(f"\n총 {len(raw_jobs)}건의 원시 데이터 수집 완료.")
     print("=" * 60)
