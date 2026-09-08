@@ -95,11 +95,56 @@ def post_job_opening(title: str, content: str, board_id: int = BOARD_ID) -> Opti
         return None
 
 
-def format_job_html(job: Dict[str, Any]) -> str:
+def calculate_job_dday(deadline_str: str) -> tuple[str, str]:
+    """Calculate D-day text and CSS style for badge."""
+    if not deadline_str or deadline_str == "상시채용":
+        return "상시채용", "background-color: #f8fafc; color: #475569; border: 1px solid #e2e8f0; font-weight: 700;"
+    try:
+        dt = datetime.strptime(deadline_str, "%Y-%m-%d").date()
+        today = datetime.now().date()
+        diff = (dt - today).days
+        if diff < 0:
+            return "마감", "background-color: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; font-weight: 800;"
+        elif diff == 0:
+            return "오늘마감 (D-Day)", "background-color: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; font-weight: 800;"
+        elif diff <= 3:
+            return f"D-{diff} (임박)", "background-color: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; font-weight: 800;"
+        elif diff <= 7:
+            return f"D-{diff}", "background-color: #fffbeb; color: #b45309; border: 1px solid #fde68a; font-weight: 800;"
+        else:
+            return f"D-{diff}", "background-color: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; font-weight: 800;"
+    except Exception:
+        return "상시채용", "background-color: #f8fafc; color: #475569; border: 1px solid #e2e8f0; font-weight: 700;"
+
+
+def format_kboard_title(job: Dict[str, Any]) -> str:
     """
-    Format job details into a modern, responsive HTML card for KBoard post content.
+    Format job title for KBoard list with high-visibility source, D-Day, and location tags.
+    Example: [국립국어원 · D-4 · 전국/기타] (주)한국국제교류중심 외국인 유학생 대상 한국어 강사 채용
     """
     source = job.get("source", "기타")
+    location = job.get("location", "전국/기타")
+    deadline = job.get("deadline", "상시채용")
+    title = job.get("title", "").strip()
+
+    dday_label, _ = calculate_job_dday(deadline)
+    # Strip (임박) for concise list title
+    concise_dday = dday_label.replace(" (임박)", "")
+
+    # Avoid duplicate tags if already present
+    if f"[{source}" in title:
+        return title
+
+    return f"[{source} · {concise_dday} · {location}] {title}"
+
+
+def format_job_html(job: Dict[str, Any]) -> str:
+    """
+    Format job details into a high-visibility, responsive HTML card matching the admin design.
+    Minified without blank newlines to prevent WordPress wpautop from inserting excess <br/> tags.
+    """
+    source = job.get("source", "기타")
+    title = job.get("title", "")
     org = job.get("organization", "미기재")
     location = job.get("location", "전국/기타")
     grade = job.get("grade", "무관/미지정")
@@ -107,47 +152,57 @@ def format_job_html(job: Dict[str, Any]) -> str:
     created_at = job.get("created_at", "-")
     url = job.get("url", "#")
 
-    html = f"""<div style="font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; line-height: 1.6; color: #333333; max-width: 680px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 10px; background-color: #ffffff;">
-    <div style="margin-bottom: 15px; display: flex; gap: 8px; flex-wrap: wrap;">
-        <span style="background-color: #eff6ff; color: #1d4ed8; padding: 4px 10px; border-radius: 9999px; font-size: 12px; font-weight: bold; border: 1px solid #bfdbfe;">{source}</span>
-        <span style="background-color: #f1f5f9; color: #475569; padding: 4px 10px; border-radius: 9999px; font-size: 12px; font-weight: bold;">📍 {location}</span>
-        <span style="background-color: #fef3c7; color: #b45309; padding: 4px 10px; border-radius: 9999px; font-size: 12px; font-weight: bold;">🎓 자격: {grade}</span>
-    </div>
+    # Source Badge Styles
+    src_styles = {
+        "국립국어원": "background-color: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;",
+        "한국어교육바다": "background-color: #ecfdf5; color: #047857; border: 1px solid #a7f3d0;",
+        "세종학당재단": "background-color: #fff7ed; color: #c2410c; border: 1px solid #fed7aa;",
+        "다누리": "background-color: #faf5ff; color: #7e22ce; border: 1px solid #e9d5ff;",
+        "워크넷": "background-color: #f0fdfa; color: #0f766e; border: 1px solid #99f6e4;",
+    }
+    src_style = src_styles.get(source, "background-color: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;")
 
-    <table style="width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px;">
-        <tbody>
-            <tr style="border-bottom: 1px solid #f1f5f9;">
-                <td style="padding: 10px 8px; width: 100px; color: #64748b; font-weight: bold;">채용 기관</td>
-                <td style="padding: 10px 8px; color: #0f172a; font-weight: bold;">{org}</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #f1f5f9;">
-                <td style="padding: 10px 8px; color: #64748b; font-weight: bold;">근무 지역</td>
-                <td style="padding: 10px 8px; color: #0f172a;">{location}</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #f1f5f9;">
-                <td style="padding: 10px 8px; color: #64748b; font-weight: bold;">자격 등급</td>
-                <td style="padding: 10px 8px; color: #0f172a;">{grade}</td>
-            </tr>
-            <tr style="border-bottom: 1px solid #f1f5f9;">
-                <td style="padding: 10px 8px; color: #64748b; font-weight: bold;">접수 마감일</td>
-                <td style="padding: 10px 8px; color: #dc2626; font-weight: bold;">{deadline}</td>
-            </tr>
-            <tr>
-                <td style="padding: 10px 8px; color: #64748b; font-weight: bold;">공고 등록일</td>
-                <td style="padding: 10px 8px; color: #64748b;">{created_at}</td>
-            </tr>
-        </tbody>
-    </table>
+    dday_label, dday_style = calculate_job_dday(deadline)
 
-    <div style="text-align: center; margin: 25px 0 15px 0;">
-        <a href="{url}" target="_blank" rel="noopener noreferrer" style="display: inline-block; background-color: #2563eb; color: #ffffff; padding: 12px 28px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 15px; box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);">공고 원문 보러가기 ↗</a>
-    </div>
-
-    <div style="border-top: 1px solid #f1f5f9; padding-top: 15px; text-align: center; font-size: 12px; color: #94a3b8;">
-        본 채용 정보는 한국어교원 채용 통합 대시보드 자동 수집 시스템을 통해 제공됩니다.
-    </div>
-</div>"""
+    # High-visibility card matching user screenshot
+    html = (
+        f'<div class="job-card-wrapper" style="font-family: Pretendard, -apple-system, BlinkMacSystemFont, Malgun Gothic, sans-serif; line-height: 1.6; color: #1e293b; max-width: 700px; margin: 0 auto; padding: 24px; border: 1px solid #e2e8f0; border-radius: 14px; background-color: #ffffff; box-shadow: 0 4px 12px -2px rgba(0,0,0,0.05);">'
+        # Top 4 Badges
+        f'<div class="badge-wrap" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">'
+        f'<span class="badge" style="padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 700; {src_style}">{source}</span>'
+        f'<span class="badge" style="padding: 4px 12px; border-radius: 9999px; font-size: 12px; {dday_style}">{dday_label}</span>'
+        f'<span class="badge" style="padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 600; background-color: #f1f5f9; color: #334155; border: 1px solid #e2e8f0;">📍 {location}</span>'
+        f'<span class="badge" style="padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 600; background-color: #f1f5f9; color: #334155; border: 1px solid #e2e8f0;">🎓 자격: {grade}</span>'
+        f'</div>'
+        # Large Bold Title
+        f'<div class="card-title" style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin: 12px 0; line-height: 1.45;">{title}</div>'
+        # Icon Meta Row
+        f'<div class="card-meta" style="font-size: 0.9rem; color: #475569; display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid #f1f5f9;">'
+        f'<span>🏢 <b>{org}</b></span>'
+        f'<span>⏰ 마감: <b style="color: #dc2626;">{deadline}</b></span>'
+        f'<span>🗓️ 수집일: {created_at}</span>'
+        f'</div>'
+        # Specifications Table
+        f'<table class="job-spec-table" style="width: 100%; border-collapse: collapse; margin-bottom: 22px; font-size: 14px;">'
+        f'<tbody>'
+        f'<tr style="border-bottom: 1px solid #f1f5f9;"><td class="label" style="padding: 10px 8px; width: 110px; color: #64748b; font-weight: 700;">채용 기관</td><td class="val" style="padding: 10px 8px; color: #0f172a; font-weight: 700;">{org}</td></tr>'
+        f'<tr style="border-bottom: 1px solid #f1f5f9;"><td class="label" style="padding: 10px 8px; color: #64748b; font-weight: 700;">근무 지역</td><td class="val" style="padding: 10px 8px; color: #0f172a;">{location}</td></tr>'
+        f'<tr style="border-bottom: 1px solid #f1f5f9;"><td class="label" style="padding: 10px 8px; color: #64748b; font-weight: 700;">자격 등급</td><td class="val" style="padding: 10px 8px; color: #0f172a;">{grade}</td></tr>'
+        f'<tr style="border-bottom: 1px solid #f1f5f9;"><td class="label" style="padding: 10px 8px; color: #64748b; font-weight: 700;">접수 마감일</td><td class="val danger" style="padding: 10px 8px; color: #dc2626; font-weight: 800;">{deadline} ({dday_label})</td></tr>'
+        f'<tr><td class="label" style="padding: 10px 8px; color: #64748b; font-weight: 700;">공고 등록일</td><td class="val" style="padding: 10px 8px; color: #64748b;">{created_at}</td></tr>'
+        f'</tbody>'
+        f'</table>'
+        # Prominent CTA Button (unquoted url so magic_quotes never breaks it)
+        f'<div class="job-cta-wrap" style="text-align: center; margin: 24px 0 10px 0;">'
+        f'<a href={url} target=_blank rel=noopener class="job-apply-btn" style="display: inline-block; background-color: #2563eb; color: #ffffff !important; padding: 13px 34px; border-radius: 8px; font-weight: 800; text-decoration: none; font-size: 15px; box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);">공고 원문 보러가기 ↗</a>'
+        f'</div>'
+        f'<div class="job-footer" style="border-top: 1px solid #f1f5f9; padding-top: 14px; text-align: center; font-size: 12px; color: #94a3b8;">'
+        f'본 채용 정보는 한국어교원 채용 통합 대시보드 자동 수집 시스템을 통해 제공됩니다.'
+        f'</div>'
+        f'</div>'
+    )
     return html
+
 
 
 JOBS_FILE = os.path.join(DATA_DIR, "jobs.json")
@@ -246,9 +301,10 @@ def approve_and_publish_job(
 
     title = job.get("title", "")
     content = format_job_html(job)
+    kboard_title = format_kboard_title(job)
 
     # Post to WordPress KBoard
-    res = post_job_opening(title=title, content=content, board_id=BOARD_ID)
+    res = post_job_opening(title=kboard_title, content=content, board_id=BOARD_ID)
 
     if res and res.get("status") == "success":
         uid = res.get("kboard_uid") or res.get("post_id")
@@ -369,10 +425,11 @@ def sync_jobs_to_kboard(jobs: List[Dict[str, Any]], limit: Optional[int] = None,
     for idx, job in enumerate(unposted_jobs, 1):
         job_id = str(job.get("id"))
         title = job.get("title", "")
+        kboard_title = format_kboard_title(job)
         html_content = format_job_html(job)
 
-        print(f" -> [{idx}/{len(unposted_jobs)}] 전송 중: {title[:35]}...")
-        result = post_job_opening(title=title, content=html_content, board_id=BOARD_ID)
+        print(f" -> [{idx}/{len(unposted_jobs)}] 전송 중: {kboard_title[:35]}...")
+        result = post_job_opening(title=kboard_title, content=html_content, board_id=BOARD_ID)
 
         if result and result.get("status") == "success":
             uid = result.get("kboard_uid") or result.get("post_id")
