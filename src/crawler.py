@@ -548,9 +548,8 @@ def run_pipeline() -> list[dict]:
         print("      [4/4] 워드프레스 KBoard 신규 공고 자동 동기화 중...")
         print("=" * 60)
         try:
-            from src.publisher import WordPressPublisher
-            publisher = WordPressPublisher()
-            pub_stats = publisher.publish_new_jobs(clean_jobs, delay_sec=0.5)
+            from src.poster import sync_jobs_to_kboard
+            pub_stats = sync_jobs_to_kboard(clean_jobs, delay_sec=0.5)
             print(f"-> KBoard 동기화 결과: 신규 {pub_stats['published']}건 등록, {pub_stats['skipped']}건 기존 유지, {pub_stats['failed']}건 실패")
         except Exception as e:
             print(f"-> [Warning] 워드프레스 KBoard 동기화 중 오류 발생: {e}")
