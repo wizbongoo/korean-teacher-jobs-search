@@ -166,6 +166,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "jobs.json")
+KBOARD_PUBLISHED_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "published_kboard.json")
 
 @st.cache_data(ttl=60)
 def load_jobs_data():
@@ -178,6 +179,16 @@ def load_jobs_data():
     except Exception as e:
         st.error(f"데이터 로드 실패: {e}")
         return []
+
+def load_kboard_published():
+    """Load records of jobs published to WordPress KBoard."""
+    if not os.path.exists(KBOARD_PUBLISHED_PATH):
+        return {}
+    try:
+        with open(KBOARD_PUBLISHED_PATH, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
 
 def get_dday_info(deadline_str, today=None):
     """Calculate D-day text, class, and integer days for sorting."""
@@ -260,6 +271,20 @@ def main():
 
     # Sorting
     sort_option = st.sidebar.selectbox("정렬 기준", ["마감일 빠른순", "최근 등록순", "기관명 가나다순"])
+
+    # WordPress KBoard Integration Section
+    st.sidebar.markdown("---")
+    st.sidebar.subheader("🌐 워드프레스 KBoard")
+    st.sidebar.caption("🔗 [korean-teacher.infinityfreeapp.com](https://korean-teacher.infinityfreeapp.com)")
+    kboard_records = load_kboard_published()
+    st.sidebar.info(f"게시판 동기화: **{len(kboard_records)}건** 완료")
+    if st.sidebar.button("🚀 신규 공고 KBoard 동기화", use_container_width=True):
+        with st.spinner("새로운 채용공고를 KBoard로 전송 중입니다..."):
+            from src.publisher import WordPressPublisher
+            pub = WordPressPublisher()
+            stats = pub.publish_new_jobs(raw_jobs, delay_sec=0.5)
+            st.sidebar.success(f"동기화 완료! (신규 {stats['published']}건, 기존 유지 {stats['skipped']}건)")
+            st.rerun()
 
     # Apply Filters
     filtered_jobs = processed_jobs
@@ -372,6 +397,13 @@ def main():
                 dday_label = job["dday_label"]
                 dday_cls = job["dday_class"]
 
+                kboard_info = kboard_records.get(str(job.get("id")))
+                kboard_btn_html = ""
+                if kboard_info:
+                    k_uid = kboard_info.get("kboard_uid")
+                    k_url = f"https://korean-teacher.infinityfreeapp.com/?mod=document&uid={k_uid}"
+                    kboard_btn_html = f'<a href="{k_url}" target="_blank" style="display:inline-block; margin-left:6px; background-color:#ecfdf5; color:#047857 !important; border:1px solid #a7f3d0; padding:0.35rem 0.65rem; border-radius:0.4rem; font-size:0.8rem; font-weight:600; text-decoration:none;">KBoard ↗</a>'
+
                 st.markdown(f"""
                 <div class="job-card">
                     <div>
@@ -389,7 +421,10 @@ def main():
                             <span>접수마감: <b>{dl}</b></span> &nbsp;·&nbsp;
                             <span>등록일: {created}</span>
                         </div>
-                        <a href="{url}" target="_blank" class="apply-btn">공고 원문 ↗</a>
+                        <div>
+                            <a href="{url}" target="_blank" class="apply-btn">공고 원문 ↗</a>
+                            {kboard_btn_html}
+                        </div>
                     </div>
                 </div>
                 """, unsafe_allow_html=True)

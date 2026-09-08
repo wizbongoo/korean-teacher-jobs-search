@@ -123,11 +123,13 @@ korean-teacher-jobs-search/
 │   └── workflows/
 │       └── daily_crawl.yml      # GitHub Actions 매일 새벽 자동 크롤링 & 커밋
 ├── data/
-│   └── jobs.json                # 정제된 최신 채용 공고 데이터셋
+│   ├── jobs.json                # 정제된 최신 채용 공고 데이터셋
+│   └── published_kboard.json    # 워드프레스 KBoard 자동 발행 이력 (중복 방지)
 ├── src/
 │   ├── __init__.py
 │   ├── crawler.py               # 5개 사이트 모듈식 수집기 및 파이프라인 총괄
 │   ├── cleaner.py               # 결과 공지/비관련 직종/만료일자 정제 및 검증 모듈
+│   ├── publisher.py             # 워드프레스(KBoard) slowAES 우회 및 자동 발행 모듈
 │   └── utils.py                 # 네트워크 재시도, 날짜 계산, 자격/지역 정규표현식 유틸
 ├── app.py                       # Streamlit 반응형 웹 대시보드
 ├── requirements.txt             # 파이썬 의존성 패키지 목록
@@ -185,6 +187,22 @@ streamlit run app.py
    - **App URL**: 원하는 도메인명 지정 (예: `korean-teacher-jobs`)
 4. **"Deploy!"** 버튼을 클릭하면 약 1분 이내에 글로벌 라이브 URL로 서비스가 배포됩니다.
 5. GitHub Actions가 `data/jobs.json`을 자동 갱신하면 Streamlit 웹 앱에 즉시 최신 공고가 반영됩니다.
+
+---
+
+## 🌐 워드프레스 KBoard 자동 발행 연동 시스템
+
+수집 및 정제된 한국어교원 채용 공고를 외부 워드프레스 커뮤니티의 KBoard 게시판으로 자동 전송 및 발행합니다.
+
+- **연동 대상 사이트**: [https://korean-teacher.infinityfreeapp.com](https://korean-teacher.infinityfreeapp.com) (KBoard 게시판 ID: `1`)
+- **보안 방어벽 우회 기술**:
+  - InfinityFree 무료 호스팅의 `slowAES` 봇 방지 챌린지를 파이썬 `pycryptodome` (AES-128-CBC)으로 역연산하여 `__test` 세션 쿠키를 자동 발급받아 통신합니다.
+- **안전한 브릿지 통신**:
+  - `htdocs/post_bridge.php` 엔드포인트를 통해 비밀 키(`korean_secret_key_2026`) 기반으로 KBoard 전용 클래스(`KBContent`)를 직접 호출하여 안전하게 등록합니다.
+- **중복 발행 방지 (Deduplication)**:
+  - `data/published_kboard.json`에 기발행 공고 ID와 생성된 `kboard_uid`를 영구 저장하여, 매일 새로 수집된 신규 공고만 선별적으로 발행합니다.
+- **반응형 HTML 본문 서식화**:
+  - 출처, 마감일, 근무 지역, 자격 요건 및 원클릭 원문 바로가기 버튼이 포함된 스타일드 카드로 게시글 본문이 자동 생성됩니다.
 
 ---
 

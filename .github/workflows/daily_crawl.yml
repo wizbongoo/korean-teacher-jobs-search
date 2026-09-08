@@ -36,10 +36,10 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/jobs.json
+          git add data/jobs.json data/published_kboard.json
           if git diff --staged --quiet; then
-            echo "No changes detected in data/jobs.json. Skipping commit."
+            echo "No changes detected in jobs or published data. Skipping commit."
           else
-            git commit -m "chore(data): auto-update jobs data [$(date -u +'%Y-%m-%d %H:%M:%S UTC')] [skip ci]"
+            git commit -m "chore(data): auto-update jobs and kboard sync [$(date -u +'%Y-%m-%d %H:%M:%S UTC')] [skip ci]"
             git push
           fi
