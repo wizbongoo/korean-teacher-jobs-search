@@ -100,9 +100,9 @@
     "url": "https://kteacher.korean.go.kr/jobsearch/33992",
     "is_closed": false,
     "created_at": "2026-08-10",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
+    "status": "published",
+    "kboard_uid": 10,
+    "reviewed_at": "2026-09-08 16:18:12"
   },
   {
     "id": "kteacher_33333",
