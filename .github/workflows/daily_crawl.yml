@@ -1,0 +1,45 @@
+name: Daily Korean Teacher Jobs Crawl
+
+on:
+  schedule:
+    # 매일 한국 시간 06:00 (UTC 21:00)에 실행
+    - cron: '0 21 * * *'
+  workflow_dispatch: # 수동 즉시 실행 지원
+
+permissions:
+  contents: write
+
+jobs:
+  crawl-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Crawler Pipeline
+        run: |
+          python src/crawler.py
+
+      - name: Commit and Push if updated
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/jobs.json
+          if git diff --staged --quiet; then
+            echo "No changes detected in data/jobs.json. Skipping commit."
+          else
+            git commit -m "chore(data): auto-update jobs data [$(date -u +'%Y-%m-%d %H:%M:%S UTC')] [skip ci]"
+            git push
+          fi
