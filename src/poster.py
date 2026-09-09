@@ -119,23 +119,17 @@ def calculate_job_dday(deadline_str: str) -> tuple[str, str]:
 
 def format_kboard_title(job: Dict[str, Any]) -> str:
     """
-    Format job title for KBoard list with high-visibility source, D-Day, and location tags.
-    Example: [국립국어원 · D-4 · 전국/기타] (주)한국국제교류중심 외국인 유학생 대상 한국어 강사 채용
+    Format job title for KBoard.
+    Returns clean title without [출처 ...] bracket tags.
     """
-    source = job.get("source", "기타")
-    location = job.get("location", "전국/기타")
-    deadline = job.get("deadline", "상시채용")
     title = job.get("title", "").strip()
-
-    dday_label, _ = calculate_job_dday(deadline)
-    # Strip (임박) for concise list title
-    concise_dday = dday_label.replace(" (임박)", "")
-
-    # Avoid duplicate tags if already present
-    if f"[{source}" in title:
-        return title
-
-    return f"[{source} · {concise_dday} · {location}] {title}"
+    # Strip any leading source tag brackets like [한국어교육바다 ...], [국립국어원 ...], etc.
+    title = re.sub(
+        r"^\[\s*(?:한국어교육바다|국립국어원|다누리|세종학당재단|워크넷|기타)[^\]]*\]\s*",
+        "",
+        title
+    )
+    return title.strip()
 
 
 def format_job_html(job: Dict[str, Any]) -> str:
