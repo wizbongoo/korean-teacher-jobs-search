@@ -117,25 +117,52 @@ def calculate_job_dday(deadline_str: str) -> tuple[str, str]:
         return "상시채용", "background-color: #f8fafc; color: #475569; border: 1px solid #e2e8f0; font-weight: 700;"
 
 
+def format_deadline_tag(deadline_str: Optional[str]) -> str:
+    """
+    Format deadline tag for KBoard title.
+    Examples:
+      '2026-08-31' -> '[마감 26-08-31]'
+      '상시채용'    -> '[상시채용]'
+    """
+    if not deadline_str or deadline_str in ("상시채용", "상시"):
+        return "[상시채용]"
+
+    val = str(deadline_str).strip()
+    m_full = re.match(r"^(\d{4})-(\d{2})-(\d{2})$", val)
+    if m_full:
+        year, month, day = m_full.groups()
+        return f"[마감 {year[-2:]}-{month}-{day}]"
+
+    m_short = re.match(r"^(\d{2})-(\d{2})-(\d{2})$", val)
+    if m_short:
+        return f"[마감 {val}]"
+
+    return f"[마감 {val}]"
+
+
 def format_kboard_title(job: Dict[str, Any]) -> str:
     """
     Format job title for KBoard.
-    Returns clean title without [출처 ...] bracket tags.
+    Prepends deadline tag: [마감 YY-MM-DD] 제목 or [상시채용] 제목.
     """
     title = job.get("title", "").strip()
-    # Strip any leading source tag brackets like [한국어교육바다 ...], [국립국어원 ...], etc.
+    # Strip any leading source tag brackets or previous deadline tags to avoid duplication
     title = re.sub(
-        r"^\[\s*(?:한국어교육바다|국립국어원|다누리|세종학당재단|워크넷|기타)[^\]]*\]\s*",
+        r"^\[\s*(?:한국어교육바다|국립국어원|다누리|세종학당재단|워크넷|기타|마감|상시채용)[^\]]*\]\s*",
         "",
         title
     )
-    return title.strip()
+    deadline = job.get("deadline", "상시채용")
+    tag = format_deadline_tag(deadline)
+
+    return f"{tag} {title}".strip()
 
 
 def format_job_html(job: Dict[str, Any]) -> str:
     """
     Format job details into a high-visibility, responsive HTML card matching the admin design.
     Minified without blank newlines to prevent WordPress wpautop from inserting excess <br/> tags.
+    Does not include dynamic D-Day calculation as forum posts are static.
     """
     source = job.get("source", "기타")
     title = job.get("title", "")
@@ -156,15 +183,12 @@ def format_job_html(job: Dict[str, Any]) -> str:
     }
     src_style = src_styles.get(source, "background-color: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;")
 
-    dday_label, dday_style = calculate_job_dday(deadline)
-
-    # High-visibility card matching user screenshot
+    # High-visibility card matching user screenshot (without dynamic D-Day)
     html = (
         f'<div class="job-card-wrapper" style="font-family: Pretendard, -apple-system, BlinkMacSystemFont, Malgun Gothic, sans-serif; line-height: 1.6; color: #1e293b; max-width: 700px; margin: 0 auto; padding: 24px; border: 1px solid #e2e8f0; border-radius: 14px; background-color: #ffffff; box-shadow: 0 4px 12px -2px rgba(0,0,0,0.05);">'
-        # Top 4 Badges
+        # Top 3 Badges (Source, Location, Grade)
         f'<div class="badge-wrap" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">'
         f'<span class="badge" style="padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 700; {src_style}">{source}</span>'
-        f'<span class="badge" style="padding: 4px 12px; border-radius: 9999px; font-size: 12px; {dday_style}">{dday_label}</span>'
         f'<span class="badge" style="padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 600; background-color: #f1f5f9; color: #334155; border: 1px solid #e2e8f0;">📍 {location}</span>'
         f'<span class="badge" style="padding: 4px 12px; border-radius: 9999px; font-size: 12px; font-weight: 600; background-color: #f1f5f9; color: #334155; border: 1px solid #e2e8f0;">🎓 자격: {grade}</span>'
         f'</div>'
@@ -182,7 +206,7 @@ def format_job_html(job: Dict[str, Any]) -> str:
         f'<tr style="border-bottom: 1px solid #f1f5f9;"><td class="label" style="padding: 10px 8px; width: 110px; color: #64748b; font-weight: 700;">채용 기관</td><td class="val" style="padding: 10px 8px; color: #0f172a; font-weight: 700;">{org}</td></tr>'
         f'<tr style="border-bottom: 1px solid #f1f5f9;"><td class="label" style="padding: 10px 8px; color: #64748b; font-weight: 700;">근무 지역</td><td class="val" style="padding: 10px 8px; color: #0f172a;">{location}</td></tr>'
         f'<tr style="border-bottom: 1px solid #f1f5f9;"><td class="label" style="padding: 10px 8px; color: #64748b; font-weight: 700;">자격 등급</td><td class="val" style="padding: 10px 8px; color: #0f172a;">{grade}</td></tr>'
-        f'<tr style="border-bottom: 1px solid #f1f5f9;"><td class="label" style="padding: 10px 8px; color: #64748b; font-weight: 700;">접수 마감일</td><td class="val danger" style="padding: 10px 8px; color: #dc2626; font-weight: 800;">{deadline} ({dday_label})</td></tr>'
+        f'<tr style="border-bottom: 1px solid #f1f5f9;"><td class="label" style="padding: 10px 8px; color: #64748b; font-weight: 700;">접수 마감일</td><td class="val danger" style="padding: 10px 8px; color: #dc2626; font-weight: 800;">{deadline}</td></tr>'
         f'<tr><td class="label" style="padding: 10px 8px; color: #64748b; font-weight: 700;">공고 등록일</td><td class="val" style="padding: 10px 8px; color: #64748b;">{created_at}</td></tr>'
         f'</tbody>'
         f'</table>'

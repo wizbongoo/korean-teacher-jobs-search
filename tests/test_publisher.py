@@ -26,6 +26,22 @@ class TestPublisher(unittest.TestCase):
         self.assertIn("https://kteacher.korean.go.kr/jobsearch/123", html)
         self.assertIn("공고 원문 보러가기 ↗", html)
 
+    def test_format_kboard_title_and_no_dday(self):
+        from src.poster import format_kboard_title, format_job_html, format_deadline_tag
+        
+        # Test deadline formatting in title
+        self.assertEqual(format_deadline_tag("2026-08-31"), "[마감 26-08-31]")
+        self.assertEqual(format_deadline_tag("상시채용"), "[상시채용]")
+        
+        title_res = format_kboard_title(self.sample_job)
+        self.assertEqual(title_res, "[마감 26-09-30] 테스트 한국어교원 채용 공고")
+        
+        # Verify D-Day badge and (D-Day) text are excluded from post HTML
+        card_html = format_job_html(self.sample_job)
+        self.assertNotIn("D-", card_html)
+        self.assertNotIn("오늘마감", card_html)
+        self.assertIn("2026-09-30", card_html)
+
     @patch("src.publisher.post_job_opening")
     def test_wordpress_publisher_deduplication(self, mock_post):
         mock_post.return_value = {"status": "success", "kboard_uid": 999, "type": "kboard"}
