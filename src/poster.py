@@ -14,9 +14,18 @@ if hasattr(sys.stdout, "reconfigure"):
 
 load_dotenv()
 
-WP_URL = os.getenv("WP_URL", "https://korean-teacher.infinityfreeapp.com").rstrip("/")
-SECRET_KEY = os.getenv("KBOARD_SECRET_KEY", "korean_secret_key_2026")
-BOARD_ID = int(os.getenv("KBOARD_BOARD_ID", "1"))
+def get_config_val(key: str, default: str) -> str:
+    try:
+        import streamlit as st
+        if hasattr(st, "secrets") and key in st.secrets:
+            return str(st.secrets[key])
+    except Exception:
+        pass
+    return os.getenv(key, default)
+
+WP_URL = get_config_val("WP_URL", "https://korean-teacher.infinityfreeapp.com").rstrip("/")
+SECRET_KEY = get_config_val("KBOARD_SECRET_KEY", "korean_secret_key_2026")
+BOARD_ID = int(get_config_val("KBOARD_BOARD_ID", "1"))
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
 PUBLISHED_FILE = os.path.join(DATA_DIR, "published_kboard.json")

@@ -208,10 +208,54 @@ def get_dday_info(deadline_str, today=None):
         else:
             return f"D-{diff}", "badge-dday-safe", diff
     except Exception:
-        return "상시/미정", "badge-dday-always", 9998
+def check_password() -> bool:
+    """Returns True if user is authenticated or if no password is configured."""
+    admin_password = None
+    if hasattr(st, "secrets") and "ADMIN_PASSWORD" in st.secrets:
+        admin_password = str(st.secrets["ADMIN_PASSWORD"]).strip()
+    elif os.getenv("ADMIN_PASSWORD"):
+        admin_password = os.getenv("ADMIN_PASSWORD").strip()
+
+    if not admin_password:
+        return True
+
+    def password_entered():
+        if st.session_state.get("password_input") == admin_password:
+            st.session_state["password_correct"] = True
+            st.session_state["password_input"] = ""
+        else:
+            st.session_state["password_correct"] = False
+
+    if st.session_state.get("password_correct", False):
+        return True
+
+    st.markdown("""
+    <div style="max-width: 440px; margin: 60px auto 20px auto; padding: 28px; border: 1px solid #e2e8f0; border-radius: 12px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center;">
+        <div style="font-size: 2.2rem; margin-bottom: 8px;">🔒</div>
+        <h2 style="font-weight: 800; color: #0f172a; margin: 0 0 6px 0; font-size: 1.4rem;">운영자 관리 센터 로그인</h2>
+        <p style="font-size: 0.85rem; color: #64748b; margin: 0;">비공개 관리 센터입니다. 관리자 비밀번호를 입력해 주세요.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    col1, col2, col3 = st.columns([1, 1.2, 1])
+    with col2:
+        st.text_input(
+            "비밀번호",
+            type="password",
+            on_change=password_entered,
+            key="password_input",
+            placeholder="비밀번호 입력 후 Enter"
+        )
+        if "password_correct" in st.session_state and not st.session_state["password_correct"]:
+            st.error("❌ 비밀번호가 올바르지 않습니다.")
+
+    return False
 
 
 def main():
+    if not check_password():
+        return
+
     # Header Banner
     st.markdown("""
     <div class="admin-header">
