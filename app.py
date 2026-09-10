@@ -208,6 +208,9 @@ def get_dday_info(deadline_str, today=None):
         else:
             return f"D-{diff}", "badge-dday-safe", diff
     except Exception:
+        return "상시/미정", "badge-dday-always", 9998
+
+
 def check_password() -> bool:
     """Returns True if user is authenticated or if no password is configured."""
     admin_password = None
