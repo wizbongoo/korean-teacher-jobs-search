@@ -60,21 +60,6 @@
     "reviewed_at": "2026-09-09 12:10:15"
   },
   {
-    "id": "kteacher_34008",
-    "source": "국립국어원",
-    "title": "㈜한국국제교류중심 외국인 유학생 대상 한국어 강사 채용",
-    "organization": "㈜한국국제교류중심",
-    "location": "전국/기타",
-    "grade": "무관/미지정",
-    "deadline": "2026-09-12",
-    "url": "https://kteacher.korean.go.kr/jobsearch/34008",
-    "is_closed": false,
-    "created_at": "2026-08-13",
-    "status": "published",
-    "kboard_uid": 15,
-    "reviewed_at": "2026-09-08 18:09:37"
-  },
-  {
     "id": "kteacher_33333",
     "source": "국립국어원",
     "title": "[센랩] 광주·전남 대학 출강 한국어(TOPIK) 전문강사 모집",
@@ -810,21 +795,6 @@
     "reviewed_at": "2026-09-09 09:56:04"
   },
   {
-    "id": "danuri_168926",
-    "source": "다누리",
-    "title": "(제2026-02-010호) 2026년 강북구가족센터 다문화가족 자녀 기초학습 강사 채용 공고",
-    "organization": "강북구가족센터",
-    "location": "서울",
-    "grade": "무관/미지정",
-    "deadline": "2026-09-13",
-    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=168926&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
-    "is_closed": false,
-    "created_at": "2026-08-27",
-    "status": "published",
-    "kboard_uid": 17,
-    "reviewed_at": "2026-09-08 18:18:54"
-  },
-  {
     "id": "worknet_51296315",
     "source": "워크넷",
     "title": "[캐럿글로벌] 외국인 대상한국어강사",
@@ -853,6 +823,36 @@
     "status": "published",
     "kboard_uid": 16,
     "reviewed_at": "2026-09-08 18:10:48"
+  },
+  {
+    "id": "kteacher_34008",
+    "source": "국립국어원",
+    "title": "㈜한국국제교류중심 외국인 유학생 대상 한국어 강사 채용",
+    "organization": "㈜한국국제교류중심",
+    "location": "전국/기타",
+    "grade": "무관/미지정",
+    "deadline": "2026-09-12",
+    "url": "https://kteacher.korean.go.kr/jobsearch/34008",
+    "is_closed": false,
+    "created_at": "2026-08-13",
+    "status": "published",
+    "kboard_uid": 15,
+    "reviewed_at": "2026-09-08 18:09:37"
+  },
+  {
+    "id": "danuri_168926",
+    "source": "다누리",
+    "title": "(제2026-02-010호) 2026년 강북구가족센터 다문화가족 자녀 기초학습 강사 채용 공고",
+    "organization": "강북구가족센터",
+    "location": "서울",
+    "grade": "무관/미지정",
+    "deadline": "2026-09-13",
+    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=168926&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
+    "is_closed": false,
+    "created_at": "2026-08-27",
+    "status": "published",
+    "kboard_uid": 17,
+    "reviewed_at": "2026-09-08 18:18:54"
   },
   {
     "id": "kteacher_33992",
