@@ -795,6 +795,21 @@
     "reviewed_at": "2026-09-09 09:56:04"
   },
   {
+    "id": "danuri_168236",
+    "source": "다누리",
+    "title": "성시가족센터 언어발달지도사(시간제) 채용 공고(상시채용)",
+    "organization": "성시가족센터",
+    "location": "경기",
+    "grade": "무관/미지정",
+    "deadline": "2026-12-31",
+    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=168236&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
+    "is_closed": false,
+    "created_at": "2026-07-14",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "worknet_51296315",
     "source": "워크넷",
     "title": "[캐럿글로벌] 외국인 대상한국어강사",
@@ -868,21 +883,6 @@
     "status": "published",
     "kboard_uid": 10,
     "reviewed_at": "2026-09-08 16:18:12"
-  },
-  {
-    "id": "danuri_168236",
-    "source": "다누리",
-    "title": "성시가족센터 언어발달지도사(시간제) 채용 공고(상시채용)",
-    "organization": "성시가족센터",
-    "location": "경기",
-    "grade": "무관/미지정",
-    "deadline": "2026-12-31",
-    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=168236&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
-    "is_closed": false,
-    "created_at": "2026-07-14",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
   },
   {
     "id": "kteacher_34727",
