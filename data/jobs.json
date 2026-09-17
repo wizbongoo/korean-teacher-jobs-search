@@ -735,6 +735,21 @@
     "reviewed_at": null
   },
   {
+    "id": "danuri_169310",
+    "source": "다누리",
+    "title": "직원채용 재공고-대체인력(다문화가족 자녀 언어발달지도사, 건강가정사업팀 팀원)",
+    "organization": "울산 북구 가족센터",
+    "location": "경남/부산/울산",
+    "grade": "무관/미지정",
+    "deadline": "2026-09-23",
+    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=169310&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
+    "is_closed": false,
+    "created_at": "2026-09-17",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "danuri_169117",
     "source": "다누리",
     "title": "안산시다문화가족지원센터 공고 제2026 - 5호(러시아어 통번역지원사_육아휴직대체인력, 언어발달지도사)",
@@ -775,6 +790,36 @@
     "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=168236&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
     "is_closed": false,
     "created_at": "2026-07-14",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "worknet_Dd02012609170021",
+    "source": "워크넷",
+    "title": "[삼성이앤에이] 사내 어학강사(영어/한국어) 채용",
+    "organization": "삼성이앤에이（주）",
+    "location": "서울",
+    "grade": "무관/미지정",
+    "deadline": "2026-09-21",
+    "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=Dd02012609170021",
+    "is_closed": false,
+    "created_at": "2026-09-17",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "worknet_55058841",
+    "source": "워크넷",
+    "title": "대안교육기관 남북사랑학교한국어강사",
+    "organization": "남북사랑네트워크",
+    "location": "서울",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-16",
+    "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=55058841",
+    "is_closed": false,
+    "created_at": "2026-09-16",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
