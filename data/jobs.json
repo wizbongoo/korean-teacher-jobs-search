@@ -1,5 +1,35 @@
 [
   {
+    "id": "kteacher_34046",
+    "source": "국립국어원",
+    "title": "2026년도 KOICA 방글라데시 직업훈련원 기반 한국어교육 프로젝트(9기) 봉사단 모집",
+    "organization": "㈜모두코",
+    "location": "해외",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-13",
+    "url": "https://kteacher.korean.go.kr/jobsearch/34046",
+    "is_closed": false,
+    "created_at": "2026-08-24",
+    "status": "published",
+    "kboard_uid": 24,
+    "reviewed_at": "2026-09-09 12:10:15"
+  },
+  {
+    "id": "kteacher_33333",
+    "source": "국립국어원",
+    "title": "[센랩] 광주·전남 대학 출강 한국어(TOPIK) 전문강사 모집",
+    "organization": "센랩",
+    "location": "전남/광주",
+    "grade": "무관/미지정",
+    "deadline": "상시채용",
+    "url": "https://kteacher.korean.go.kr/jobsearch/33333",
+    "is_closed": false,
+    "created_at": "2026-06-12",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "kleocean_643",
     "source": "한국어교육바다",
     "title": "서울외국인학교 MYP/DP Korean Language Acquisition Teacher",
@@ -690,21 +720,6 @@
     "reviewed_at": null
   },
   {
-    "id": "danuri_169117",
-    "source": "다누리",
-    "title": "안산시다문화가족지원센터 공고 제2026 - 5호(러시아어 통번역지원사_육아휴직대체인력, 언어발달지도사)",
-    "organization": "안산시다문화가족지원센터",
-    "location": "경기",
-    "grade": "무관/미지정",
-    "deadline": "2026-09-21",
-    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=169117&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
-    "is_closed": false,
-    "created_at": "2026-09-07",
-    "status": "published",
-    "kboard_uid": 23,
-    "reviewed_at": "2026-09-09 11:52:36"
-  },
-  {
     "id": "danuri_168236",
     "source": "다누리",
     "title": "성시가족센터 언어발달지도사(시간제) 채용 공고(상시채용)",
@@ -720,21 +735,6 @@
     "reviewed_at": null
   },
   {
-    "id": "worknet_Dd02012609170021",
-    "source": "워크넷",
-    "title": "[삼성이앤에이] 사내 어학강사(영어/한국어) 채용",
-    "organization": "삼성이앤에이（주）",
-    "location": "서울",
-    "grade": "무관/미지정",
-    "deadline": "2026-09-21",
-    "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=Dd02012609170021",
-    "is_closed": false,
-    "created_at": "2026-09-17",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
-  },
-  {
     "id": "worknet_55058841",
     "source": "워크넷",
     "title": "대안교육기관 남북사랑학교한국어강사",
@@ -745,6 +745,36 @@
     "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=55058841",
     "is_closed": false,
     "created_at": "2026-09-16",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "danuri_169117",
+    "source": "다누리",
+    "title": "안산시다문화가족지원센터 공고 제2026 - 5호(러시아어 통번역지원사_육아휴직대체인력, 언어발달지도사)",
+    "organization": "안산시다문화가족지원센터",
+    "location": "경기",
+    "grade": "무관/미지정",
+    "deadline": "2026-09-21",
+    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=169117&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
+    "is_closed": false,
+    "created_at": "2026-09-07",
+    "status": "published",
+    "kboard_uid": 23,
+    "reviewed_at": "2026-09-09 11:52:36"
+  },
+  {
+    "id": "worknet_Dd02012609170021",
+    "source": "워크넷",
+    "title": "[삼성이앤에이] 사내 어학강사(영어/한국어) 채용",
+    "organization": "삼성이앤에이（주）",
+    "location": "서울",
+    "grade": "무관/미지정",
+    "deadline": "2026-09-21",
+    "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=Dd02012609170021",
+    "is_closed": false,
+    "created_at": "2026-09-17",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
@@ -778,36 +808,6 @@
     "status": "published",
     "kboard_uid": 19,
     "reviewed_at": "2026-09-09 09:50:10"
-  },
-  {
-    "id": "kteacher_34046",
-    "source": "국립국어원",
-    "title": "2026년도 KOICA 방글라데시 직업훈련원 기반 한국어교육 프로젝트(9기) 봉사단 모집",
-    "organization": "㈜모두코",
-    "location": "해외",
-    "grade": "무관/미지정",
-    "deadline": "2026-10-13",
-    "url": "https://kteacher.korean.go.kr/jobsearch/34046",
-    "is_closed": false,
-    "created_at": "2026-08-24",
-    "status": "published",
-    "kboard_uid": 24,
-    "reviewed_at": "2026-09-09 12:10:15"
-  },
-  {
-    "id": "kteacher_33333",
-    "source": "국립국어원",
-    "title": "[센랩] 광주·전남 대학 출강 한국어(TOPIK) 전문강사 모집",
-    "organization": "센랩",
-    "location": "전남/광주",
-    "grade": "무관/미지정",
-    "deadline": "상시채용",
-    "url": "https://kteacher.korean.go.kr/jobsearch/33333",
-    "is_closed": false,
-    "created_at": "2026-06-12",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
   },
   {
     "id": "danuri_168997",
