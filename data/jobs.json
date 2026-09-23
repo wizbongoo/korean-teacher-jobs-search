@@ -1,5 +1,20 @@
 [
   {
+    "id": "kteacher_34938",
+    "source": "국립국어원",
+    "title": "숙명여자대학교 숙명글로벌어학원 시간제 강사 모집",
+    "organization": "숙명여자대학교 숙명글로벌어학원",
+    "location": "전국/기타",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-13",
+    "url": "https://kteacher.korean.go.kr/jobsearch/34938",
+    "is_closed": false,
+    "created_at": "2026-09-23",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "kteacher_34046",
     "source": "국립국어원",
     "title": "2026년도 KOICA 방글라데시 직업훈련원 기반 한국어교육 프로젝트(9기) 봉사단 모집",
@@ -13,21 +28,6 @@
     "status": "published",
     "kboard_uid": 24,
     "reviewed_at": "2026-09-09 12:10:15"
-  },
-  {
-    "id": "kteacher_33333",
-    "source": "국립국어원",
-    "title": "[센랩] 광주·전남 대학 출강 한국어(TOPIK) 전문강사 모집",
-    "organization": "센랩",
-    "location": "전남/광주",
-    "grade": "무관/미지정",
-    "deadline": "상시채용",
-    "url": "https://kteacher.korean.go.kr/jobsearch/33333",
-    "is_closed": false,
-    "created_at": "2026-06-12",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
   },
   {
     "id": "kleocean_643",
@@ -675,21 +675,6 @@
     "reviewed_at": null
   },
   {
-    "id": "danuri_169184",
-    "source": "다누리",
-    "title": "2026년 2차 결혼이민자 역량강화지원사업 한국어(토픽반)강사 채용",
-    "organization": "충북 청원 가족센터",
-    "location": "충북",
-    "grade": "무관/미지정",
-    "deadline": "2026-09-22",
-    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=169184&cpage=1&rows=10&condition=&keyword=한국어&area=&area_detail=&search_year=&search_month=&search_recruit_stat=",
-    "is_closed": false,
-    "created_at": "2026-09-10",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
-  },
-  {
     "id": "danuri_165877",
     "source": "다누리",
     "title": "2026년 파주시가족센터 한국어 강사, 행정요원 결정공고",
@@ -705,21 +690,6 @@
     "reviewed_at": null
   },
   {
-    "id": "danuri_169310",
-    "source": "다누리",
-    "title": "직원채용 재공고-대체인력(다문화가족 자녀 언어발달지도사, 건강가정사업팀 팀원)",
-    "organization": "울산 북구 가족센터",
-    "location": "경남/부산/울산",
-    "grade": "무관/미지정",
-    "deadline": "2026-09-23",
-    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=169310&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
-    "is_closed": false,
-    "created_at": "2026-09-17",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
-  },
-  {
     "id": "danuri_168236",
     "source": "다누리",
     "title": "성시가족센터 언어발달지도사(시간제) 채용 공고(상시채용)",
@@ -730,6 +700,66 @@
     "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=168236&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
     "is_closed": false,
     "created_at": "2026-07-14",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "danuri_165525",
+    "source": "다누리",
+    "title": "[채용공고]부산진구다문화가족지원센터 이중언어 학습지원 이중언어강사(베트남어, 중국어, 일본어) 채용 연장(2차) 공고",
+    "organization": "부산진구다문화가족지원센터",
+    "location": "해외",
+    "grade": "무관/미지정",
+    "deadline": "2026-12-11",
+    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=165525&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
+    "is_closed": false,
+    "created_at": "2026-02-27",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "kteacher_33333",
+    "source": "국립국어원",
+    "title": "[센랩] 광주·전남 대학 출강 한국어(TOPIK) 전문강사 모집",
+    "organization": "센랩",
+    "location": "전남/광주",
+    "grade": "무관/미지정",
+    "deadline": "상시채용",
+    "url": "https://kteacher.korean.go.kr/jobsearch/33333",
+    "is_closed": false,
+    "created_at": "2026-06-12",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "danuri_169184",
+    "source": "다누리",
+    "title": "2026년 2차 결혼이민자 역량강화지원사업 한국어(토픽반)강사 채용",
+    "organization": "충북 청원 가족센터",
+    "location": "충북",
+    "grade": "무관/미지정",
+    "deadline": "2026-09-22",
+    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=169184&cpage=1&rows=10&condition=&keyword=한국어&area=&area_detail=&search_year=&search_month=&search_recruit_stat=",
+    "is_closed": false,
+    "created_at": "2026-09-10",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "danuri_169310",
+    "source": "다누리",
+    "title": "직원채용 재공고-대체인력(다문화가족 자녀 언어발달지도사, 건강가정사업팀 팀원)",
+    "organization": "울산 북구 가족센터",
+    "location": "경남/부산/울산",
+    "grade": "무관/미지정",
+    "deadline": "2026-09-23",
+    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=169310&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
+    "is_closed": false,
+    "created_at": "2026-09-17",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
