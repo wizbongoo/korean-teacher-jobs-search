@@ -1,35 +1,5 @@
 [
   {
-    "id": "kteacher_34938",
-    "source": "국립국어원",
-    "title": "숙명여자대학교 숙명글로벌어학원 시간제 강사 모집",
-    "organization": "숙명여자대학교 숙명글로벌어학원",
-    "location": "전국/기타",
-    "grade": "무관/미지정",
-    "deadline": "2026-10-13",
-    "url": "https://kteacher.korean.go.kr/jobsearch/34938",
-    "is_closed": false,
-    "created_at": "2026-09-23",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
-  },
-  {
-    "id": "kteacher_34046",
-    "source": "국립국어원",
-    "title": "2026년도 KOICA 방글라데시 직업훈련원 기반 한국어교육 프로젝트(9기) 봉사단 모집",
-    "organization": "㈜모두코",
-    "location": "해외",
-    "grade": "무관/미지정",
-    "deadline": "2026-10-13",
-    "url": "https://kteacher.korean.go.kr/jobsearch/34046",
-    "is_closed": false,
-    "created_at": "2026-08-24",
-    "status": "published",
-    "kboard_uid": 24,
-    "reviewed_at": "2026-09-09 12:10:15"
-  },
-  {
     "id": "kleocean_643",
     "source": "한국어교육바다",
     "title": "서울외국인학교 MYP/DP Korean Language Acquisition Teacher",
@@ -720,6 +690,21 @@
     "reviewed_at": null
   },
   {
+    "id": "danuri_165524",
+    "source": "다누리",
+    "title": "(이중언어강사 채용26-001호) 이중언어 학습지원 강사 공개채용 공고",
+    "organization": "광주 북구 가족센터",
+    "location": "전남/광주",
+    "grade": "무관/미지정",
+    "deadline": "2026-12-31",
+    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=165524&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
+    "is_closed": false,
+    "created_at": "2026-03-07",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "worknet_55058841",
     "source": "워크넷",
     "title": "대안교육기관 남북사랑학교한국어강사",
@@ -748,6 +733,36 @@
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
+  },
+  {
+    "id": "kteacher_34938",
+    "source": "국립국어원",
+    "title": "숙명여자대학교 숙명글로벌어학원 시간제 강사 모집",
+    "organization": "숙명여자대학교 숙명글로벌어학원",
+    "location": "전국/기타",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-13",
+    "url": "https://kteacher.korean.go.kr/jobsearch/34938",
+    "is_closed": false,
+    "created_at": "2026-09-23",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "kteacher_34046",
+    "source": "국립국어원",
+    "title": "2026년도 KOICA 방글라데시 직업훈련원 기반 한국어교육 프로젝트(9기) 봉사단 모집",
+    "organization": "㈜모두코",
+    "location": "해외",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-13",
+    "url": "https://kteacher.korean.go.kr/jobsearch/34046",
+    "is_closed": false,
+    "created_at": "2026-08-24",
+    "status": "published",
+    "kboard_uid": 24,
+    "reviewed_at": "2026-09-09 12:10:15"
   },
   {
     "id": "kteacher_33333",
