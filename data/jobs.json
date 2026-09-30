@@ -1,5 +1,20 @@
 [
   {
+    "id": "kteacher_34966",
+    "source": "국립국어원",
+    "title": "[1:1 온라인 화상 수업] 한국어브릿지 한국어교원 강사(튜터) 모집",
+    "organization": "한국어브릿지(KoreanBridge)",
+    "location": "온라인/재택",
+    "grade": "무관/미지정",
+    "deadline": "2026-11-15",
+    "url": "https://kteacher.korean.go.kr/jobsearch/34966",
+    "is_closed": false,
+    "created_at": "2026-09-29",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "kteacher_34938",
     "source": "국립국어원",
     "title": "숙명여자대학교 숙명글로벌어학원 시간제 강사 모집",
