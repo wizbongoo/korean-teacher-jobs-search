@@ -148,21 +148,36 @@ class KLEOceanCrawler:
                 if m1:
                     deadline = parse_date(m1.group(2))
                 else:
-                    # Pattern 2: (~\d{1,2}/\d{1,2}) e.g. (~8/10)
-                    m2 = re.search(r"[~-]\s*(\d{1,2})/(\d{1,2})", title)
-                    if m2 and created_at:
-                        c_year = created_at[:4]
-                        deadline = f"{c_year}-{int(m2.group(1)):02d}-{int(m2.group(2)):02d}"
+                    # Pattern 2: (~M.D) or (~M/D) or (~YYYY.M.D) e.g. (~1.19), (~8/10), (~2026.01.09)
+                    m2 = re.search(r"[~-]\s*(?:(\d{4})[-./])?(\d{1,2})[-./](\d{1,2})", title)
+                    if m2:
+                        y = int(m2.group(1)) if m2.group(1) else (int(created_at[:4]) if created_at else datetime.now().year)
+                        m = int(m2.group(2))
+                        d = int(m2.group(3))
+                        try:
+                            deadline = f"{y:04d}-{m:02d}-{d:02d}"
+                        except Exception:
+                            pass
                     else:
-                        # Pattern 3: English deadline "submitted by April 15, 2026" or "deadline is November 30, 2026"
-                        m3 = re.search(r"(?:deadline|submitted by|due)[:\s]*([A-Za-z]+\s+\d{1,2},?\s+\d{4})", combined_text, re.IGNORECASE)
-                        if m3:
-                            deadline = parse_date(m3.group(1))
+                        m2_ko = re.search(r"[~-]\s*(\d{1,2})월\s*(\d{1,2})일", title)
+                        if m2_ko:
+                            y = int(created_at[:4]) if created_at else datetime.now().year
+                            m = int(m2_ko.group(1))
+                            d = int(m2_ko.group(2))
+                            try:
+                                deadline = f"{y:04d}-{m:02d}-{d:02d}"
+                            except Exception:
+                                pass
                         else:
-                            # Pattern 4: "YYYY-MM-DD까지"
-                            m4 = re.search(r"(\d{4}[-./]\d{1,2}[-./]\d{1,2})\s*까지", combined_text)
-                            if m4:
-                                deadline = parse_date(m4.group(1))
+                            # Pattern 3: English deadline "submitted by April 15, 2026" or "deadline is November 30, 2026"
+                            m3 = re.search(r"(?:deadline|submitted by|due)[:\s]*([A-Za-z]+\s+\d{1,2},?\s+\d{4})", combined_text, re.IGNORECASE)
+                            if m3:
+                                deadline = parse_date(m3.group(1))
+                            else:
+                                # Pattern 4: "YYYY-MM-DD까지"
+                                m4 = re.search(r"(\d{4}[-./]\d{1,2}[-./]\d{1,2})\s*까지", combined_text)
+                                if m4:
+                                    deadline = parse_date(m4.group(1))
 
                 # Extract organization from title
                 org_match = re.match(r"^(\[?[^\]\s]+(?:대학교|학교|재단|센터|어학당|대학|교육원|University|School|College))", title)
@@ -250,6 +265,18 @@ class KSIFCrawler:
                 grade = extract_grade(clean_title)
                 detail_url = f"{self.BASE_URL}{href}" if href.startswith("/") else href
 
+                # Extract deadline from title if present
+                deadline = "상시채용"
+                m_ksif = re.search(r"[~-]\s*(?:(\d{4})[-./])?(\d{1,2})[-./](\d{1,2})", clean_title)
+                if m_ksif:
+                    y = int(m_ksif.group(1)) if m_ksif.group(1) else (int(created_at[:4]) if created_at else datetime.now().year)
+                    m = int(m_ksif.group(2))
+                    d = int(m_ksif.group(3))
+                    try:
+                        deadline = f"{y:04d}-{m:02d}-{d:02d}"
+                    except Exception:
+                        pass
+
                 jobs.append({
                     "id": f"ksif_{item_id}",
                     "source": "세종학당재단",
@@ -257,7 +284,7 @@ class KSIFCrawler:
                     "organization": "세종학당재단",
                     "location": location,
                     "grade": grade,
-                    "deadline": "상시채용",
+                    "deadline": deadline,
                     "url": detail_url,
                     "is_closed": False,
                     "created_at": created_at or datetime.now().strftime("%Y-%m-%d"),

@@ -174,6 +174,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+from src.cleaner import JobDataCleaner
 from src.poster import (
     load_jobs_file,
     save_jobs_file,
@@ -198,7 +199,7 @@ def get_dday_info(deadline_str, today=None):
         dt = datetime.strptime(deadline_str, "%Y-%m-%d").date()
         diff = (dt - today).days
         if diff < 0:
-            return "마감", "badge-dday-danger", -1
+            return f"마감 ({abs(diff)}일 경과)", "badge-dday-danger", 10000 + abs(diff)
         elif diff == 0:
             return "오늘 마감 (D-Day)", "badge-dday-danger", 0
         elif diff <= 3:
@@ -280,20 +281,55 @@ def main():
                 st.rerun()
         return
 
-    # Normalize missing status fields
+    # Normalize missing status fields & Auto-filter expired / ended notices from pending queue
+    cleaner = JobDataCleaner(today=today)
     pub_records = load_published_records()
+    auto_rejected_count = 0
+    modified = False
+
     for job in all_jobs:
         jid = str(job.get("id"))
         if jid in pub_records and job.get("status") != "published":
             job["status"] = "published"
             job["kboard_uid"] = pub_records[jid].get("kboard_uid")
+            modified = True
         elif "status" not in job:
             job["status"] = "pending"
             job["kboard_uid"] = None
             job["reviewed_at"] = None
+            modified = True
+
+        # Check if pending job has expired or is a result/interview notice
+        if job.get("status") == "pending":
+            title = job.get("title", "")
+            deadline = job.get("deadline", "")
+            created_at = job.get("created_at", "")
+
+            if cleaner.is_ended_or_result_notice(title):
+                job["status"] = "rejected"
+                job["rejected_reason"] = "결과/합격 공고 (자동 제외)"
+                job["reviewed_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                auto_rejected_count += 1
+                modified = True
+            elif cleaner.is_expired(deadline, title=title, created_at=created_at):
+                job["status"] = "rejected"
+                job["rejected_reason"] = "마감일 경과 (자동 제외)"
+                job["reviewed_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                auto_rejected_count += 1
+                modified = True
+
+    if modified:
+        save_jobs_file(all_jobs)
+        if auto_rejected_count > 0:
+            st.toast(f"🧹 마감일 경과 및 결과 공고 {auto_rejected_count}건이 검토 대기에서 자동 제외(반려)되었습니다.")
 
     # Categorize by status
-    pending_jobs = [j for j in all_jobs if j.get("status") == "pending"]
+    pending_jobs = [
+        j for j in all_jobs
+        if j.get("status") == "pending"
+        and not cleaner.is_expired(j.get("deadline", ""), title=j.get("title", ""), created_at=j.get("created_at", ""))
+        and not cleaner.is_ended_or_result_notice(j.get("title", ""))
+    ]
     published_jobs = [j for j in all_jobs if j.get("status") == "published"]
     rejected_jobs = [j for j in all_jobs if j.get("status") == "rejected"]
 
@@ -601,6 +637,8 @@ def main():
                 org = job.get("organization", "미기재")
                 loc = job.get("location", "전국/기타")
                 rev_time = job.get("reviewed_at", "-")
+                rej_reason = job.get("rejected_reason", "운영자 수동 반려")
+                dl = job.get("deadline", "상시채용")
                 url = job.get("url", "#")
 
                 with st.container():
@@ -614,7 +652,9 @@ def main():
                         <div class="card-title" style="color: #64748b; text-decoration: line-through;">{title}</div>
                         <div class="card-meta">
                             <span class="meta-item">🏢 {org}</span>
+                            <span class="meta-item">⏰ 마감: {dl}</span>
                             <span class="meta-item">📅 처리일시: {rev_time}</span>
+                            <span class="meta-item" style="color:#b91c1c;">⚠️ 사유: <b>{rej_reason}</b></span>
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
