@@ -1,6 +1,11 @@
 import json
 import os
 import sys
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
 from datetime import datetime, date
 import pandas as pd
 import streamlit as st
@@ -174,20 +179,26 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-from src.cleaner import JobDataCleaner
-from src.poster import (
-    load_jobs_file,
-    save_jobs_file,
-    approve_and_publish_job,
-    reject_job,
-    restore_to_pending,
-    batch_approve_jobs,
-    load_published_records,
-    save_published_records,
-    sync_published_from_kboard_rss,
-    WP_URL,
-    BOARD_ID
-)
+try:
+    from src.cleaner import JobDataCleaner
+    from src.poster import (
+        load_jobs_file,
+        save_jobs_file,
+        approve_and_publish_job,
+        reject_job,
+        restore_to_pending,
+        batch_approve_jobs,
+        load_published_records,
+        save_published_records,
+        sync_published_from_kboard_rss,
+        WP_URL,
+        BOARD_ID
+    )
+except Exception as e:
+    import traceback
+    st.error(f"⚠️ 시스템 모듈 로드 중 오류가 발생했습니다: {e}")
+    st.code(traceback.format_exc())
+    st.stop()
 
 def get_dday_info(deadline_str, today=None):
     """Calculate D-day text, class, and integer days for sorting."""

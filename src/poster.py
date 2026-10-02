@@ -6,13 +6,18 @@ import time
 from datetime import datetime
 from typing import Dict, List, Any, Optional
 import requests
-from Crypto.Cipher import AES
-from dotenv import load_dotenv
 
-if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8")
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except Exception:
+    pass
 
-load_dotenv()
+try:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
 
 def get_config_val(key: str, default: str) -> str:
     try:
@@ -31,9 +36,41 @@ DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__
 PUBLISHED_FILE = os.path.join(DATA_DIR, "published_kboard.json")
 
 
+def decrypt_aes_cbc(key: bytes, iv: bytes, ciphertext: bytes) -> bytes:
+    """
+    Decrypt single AES-128-CBC block with multiple library fallbacks:
+    1. pycryptodome (Crypto)
+    2. pycryptodomex (Cryptodome)
+    3. cryptography (Standard in Streamlit Cloud / Debian)
+    """
+    # Fallback 1: pycryptodome
+    try:
+        from Crypto.Cipher import AES
+        return AES.new(key, AES.MODE_CBC, iv).decrypt(ciphertext)
+    except Exception:
+        pass
+
+    # Fallback 2: pycryptodomex
+    try:
+        from Cryptodome.Cipher import AES
+        return AES.new(key, AES.MODE_CBC, iv).decrypt(ciphertext)
+    except Exception:
+        pass
+
+    # Fallback 3: cryptography
+    try:
+        from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+        cipher = Cipher(algorithms.AES(key), modes.CBC(iv))
+        decryptor = cipher.decryptor()
+        return decryptor.update(ciphertext) + decryptor.finalize()
+    except Exception as e:
+        print(f"[Warning] No AES cipher provider available: {e}")
+        return b""
+
+
 def solve_infinityfree_challenge(session: requests.Session, url: str) -> bool:
     """
-    Decrypt InfinityFree's slowAES bot barrier challenge using pycryptodome (AES-128-CBC)
+    Decrypt InfinityFree's slowAES bot barrier challenge using AES-128-CBC
     and set the resulting __test cookie into the requests session.
     """
     try:
@@ -56,8 +93,9 @@ def solve_infinityfree_challenge(session: requests.Session, url: str) -> bool:
         iv = bytes.fromhex(b_match.group(1))
         ciphertext = bytes.fromhex(c_match.group(1))
 
-        cipher = AES.new(key, AES.MODE_CBC, iv)
-        decrypted = cipher.decrypt(ciphertext)
+        decrypted = decrypt_aes_cbc(key, iv, ciphertext)
+        if not decrypted:
+            return False
         test_cookie = decrypted.hex()
 
         domain = WP_URL.replace("https://", "").replace("http://", "").split("/")[0]
