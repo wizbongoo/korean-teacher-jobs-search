@@ -278,6 +278,119 @@ def save_published_records(records: Dict[str, Any]):
         print(f"[Warning] Failed to save published records: {e}")
 
 
+def commit_file_to_github(local_file_path: str, repo_path: str, message: str) -> bool:
+    """
+    Commit a local file change directly to the GitHub repository using the GitHub Contents API.
+    Essential for persistent state updates when running in ephemeral cloud environments (like Streamlit Cloud).
+    Requires GITHUB_TOKEN configured in Streamlit secrets or environment variables.
+    """
+    token = get_config_val("GITHUB_TOKEN", "").strip()
+    repo = get_config_val("GITHUB_REPO", "wizbongoo/korean-teacher-jobs-search").strip()
+    if not token:
+        return False
+
+    try:
+        import base64
+        headers = {
+            "Authorization": f"Bearer {token}",
+            "Accept": "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28"
+        }
+        url = f"https://api.github.com/repos/{repo}/contents/{repo_path}"
+
+        # 1. Fetch current file SHA
+        sha = None
+        get_res = requests.get(url, headers=headers, timeout=10)
+        if get_res.status_code == 200:
+            sha = get_res.json().get("sha")
+
+        # 2. Read local file content and encode in base64
+        with open(local_file_path, "rb") as f:
+            content_bytes = f.read()
+        content_b64 = base64.b64encode(content_bytes).decode("utf-8")
+
+        # 3. Create or update file
+        payload = {
+            "message": message,
+            "content": content_b64,
+            "branch": "main"
+        }
+        if sha:
+            payload["sha"] = sha
+
+        put_res = requests.put(url, headers=headers, json=payload, timeout=15)
+        if put_res.status_code in [200, 201]:
+            print(f"[GitHub Sync] Successfully committed {repo_path} to GitHub.")
+            return True
+        else:
+            print(f"[GitHub Sync] API status ({put_res.status_code}): {put_res.text[:150]}")
+            return False
+    except Exception as e:
+        print(f"[GitHub Sync] Exception: {e}")
+        return False
+
+
+def sync_published_from_kboard_rss(jobs: List[Dict], pub_records: Dict) -> bool:
+    """
+    Check KBoard RSS feed and ensure any job already present on KBoard is marked as 'published'.
+    Acts as a fail-safe against container restarts and ephemeral cloud storage.
+    """
+    try:
+        import xml.etree.ElementTree as ET
+        session = requests.Session()
+        session.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/128.0.0.0 Safari/537.36"})
+        rss_url = f"{WP_URL}/wp-content/plugins/kboard/rss.php?board_id={BOARD_ID}"
+        solve_infinityfree_challenge(session, rss_url)
+        r = session.get(rss_url, timeout=6)
+        if r.status_code != 200 or "<rss" not in r.text:
+            return False
+
+        root = ET.fromstring(r.text)
+        rss_items = []
+        for item in root.findall(".//item"):
+            t_elem = item.find("title")
+            l_elem = item.find("link")
+            t = t_elem.text.strip() if t_elem is not None and t_elem.text else ""
+            link = l_elem.text.strip() if l_elem is not None and l_elem.text else ""
+            uid_m = re.search(r"redirect=(\d+)", link)
+            if uid_m:
+                rss_items.append({"uid": int(uid_m.group(1)), "title": t})
+
+        if not rss_items:
+            return False
+
+        modified = False
+        for job in jobs:
+            if job.get("status") == "published" and job.get("kboard_uid"):
+                continue
+
+            norm_job = re.sub(r"[\s⦁·\(\)\[\]_]", "", job.get("title", ""))
+            if not norm_job:
+                continue
+
+            for r_item in rss_items:
+                clean_rss_t = re.sub(r"\[마감[^\]]+\]\s*", "", r_item["title"]).strip()
+                norm_rss = re.sub(r"[\s⦁·\(\)\[\]_]", "", clean_rss_t)
+                if norm_rss and (norm_job in norm_rss or norm_rss in norm_job):
+                    job["status"] = "published"
+                    job["kboard_uid"] = r_item["uid"]
+                    if not job.get("reviewed_at"):
+                        job["reviewed_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    jid = str(job.get("id"))
+                    pub_records[jid] = {
+                        "kboard_uid": r_item["uid"],
+                        "title": job.get("title"),
+                        "source": job.get("source"),
+                        "published_at": job["reviewed_at"]
+                    }
+                    modified = True
+                    break
+        return modified
+    except Exception as e:
+        print(f"[Warning] KBoard RSS sync skipped: {e}")
+        return False
+
+
 # Alias for backward compatibility
 format_kboard_content = format_job_html
 
@@ -353,6 +466,10 @@ def approve_and_publish_job(
         }
         save_published_records(pub_records)
 
+        # Sync to GitHub if GITHUB_TOKEN configured
+        commit_file_to_github(JOBS_FILE, "data/jobs.json", f"chore: approve job {job_id} [skip ci]")
+        commit_file_to_github(PUBLISHED_FILE, "data/published_kboard.json", f"chore: update published record {job_id} [skip ci]")
+
         return {
             "status": "success",
             "kboard_uid": uid,
@@ -380,6 +497,7 @@ def reject_job(job_id: str) -> bool:
             break
     if updated:
         save_jobs_file(jobs)
+        commit_file_to_github(JOBS_FILE, "data/jobs.json", f"chore: reject job {job_id} [skip ci]")
     return updated
 
 
@@ -397,6 +515,7 @@ def restore_to_pending(job_id: str) -> bool:
             break
     if updated:
         save_jobs_file(jobs)
+        commit_file_to_github(JOBS_FILE, "data/jobs.json", f"chore: restore job {job_id} [skip ci]")
     return updated
 
 

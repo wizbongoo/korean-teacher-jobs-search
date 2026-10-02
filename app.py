@@ -183,6 +183,8 @@ from src.poster import (
     restore_to_pending,
     batch_approve_jobs,
     load_published_records,
+    save_published_records,
+    sync_published_from_kboard_rss,
     WP_URL,
     BOARD_ID
 )
@@ -287,6 +289,10 @@ def main():
     auto_rejected_count = 0
     modified = False
 
+    # Sync with live KBoard RSS if available (fail-safe for cloud container restarts)
+    if sync_published_from_kboard_rss(all_jobs, pub_records):
+        modified = True
+
     for job in all_jobs:
         jid = str(job.get("id"))
         if jid in pub_records and job.get("status") != "published":
@@ -320,6 +326,7 @@ def main():
 
     if modified:
         save_jobs_file(all_jobs)
+        save_published_records(pub_records)
         if auto_rejected_count > 0:
             st.toast(f"🧹 마감일 경과 및 결과 공고 {auto_rejected_count}건이 검토 대기에서 자동 제외(반려)되었습니다.")
 
