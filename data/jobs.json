@@ -1,5 +1,35 @@
 [
   {
+    "id": "kteacher_34982",
+    "source": "국립국어원",
+    "title": "2026-겨울학기 선문대학교 한국어교육원 강사 모집(15시수 미만)",
+    "organization": "선문대학교 한국어교육원",
+    "location": "전국/기타",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-12",
+    "url": "https://kteacher.korean.go.kr/jobsearch/34982",
+    "is_closed": false,
+    "created_at": "2026-10-02",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "kteacher_34981",
+    "source": "국립국어원",
+    "title": "2026-겨울학기 선문대학교 한국어교육원 강사 모집(15시수 이상)",
+    "organization": "선문대학교 한국어교육원",
+    "location": "전국/기타",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-12",
+    "url": "https://kteacher.korean.go.kr/jobsearch/34981",
+    "is_closed": false,
+    "created_at": "2026-10-02",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "kteacher_34971",
     "source": "국립국어원",
     "title": "명지대학교 국제교류처 한국어교육센터 한국어강사 모집 공고  ⦁ 인문(서울)캠퍼스 ⦁",
