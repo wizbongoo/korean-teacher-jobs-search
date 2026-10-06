@@ -120,21 +120,6 @@
     "reviewed_at": "2026-09-09 11:16:48"
   },
   {
-    "id": "kleocean_599",
-    "source": "한국어교육바다",
-    "title": "대전 Taejon Christian International School 한국어강사 IB MYP 채용",
-    "organization": "한국어 교육기관",
-    "location": "충남/대전/세종",
-    "grade": "무관/미지정",
-    "deadline": "상시채용",
-    "url": "https://kleocean.com/?kboard_content_redirect=599",
-    "is_closed": false,
-    "created_at": "2026-07-07",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
-  },
-  {
     "id": "kleocean_650",
     "source": "한국어교육바다",
     "title": "일본 徳島大学 한국어강사 한국어교수 해외취업 채용공고",
@@ -490,6 +475,21 @@
     "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=51695572",
     "is_closed": false,
     "created_at": "2026-10-01",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "kleocean_599",
+    "source": "한국어교육바다",
+    "title": "대전 Taejon Christian International School 한국어강사 IB MYP 채용",
+    "organization": "한국어 교육기관",
+    "location": "충남/대전/세종",
+    "grade": "무관/미지정",
+    "deadline": "상시채용",
+    "url": "https://kleocean.com/?kboard_content_redirect=599",
+    "is_closed": false,
+    "created_at": "2026-07-07",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
