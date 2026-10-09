@@ -1,5 +1,20 @@
 [
   {
+    "id": "kteacher_34994",
+    "source": "국립국어원",
+    "title": "메가스터디 ㈜아이비김영 김영평생교육원 운영 교·강사 초빙",
+    "organization": "김영평생교육원",
+    "location": "전국/기타",
+    "grade": "무관/미지정",
+    "deadline": "2026-11-06",
+    "url": "https://kteacher.korean.go.kr/jobsearch/34994",
+    "is_closed": false,
+    "created_at": "2026-10-08",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "kteacher_34989",
     "source": "국립국어원",
     "title": "2026학년도 겨울학기 김천대학교 국제교육원 시간제 한국어강사 채용 모집 공고",
@@ -435,21 +450,6 @@
     "reviewed_at": null
   },
   {
-    "id": "danuri_169568",
-    "source": "다누리",
-    "title": "직원채용 재공고-대체인력(다문화가족 자녀 언어발달지도사)",
-    "organization": "울산 북구 가족센터",
-    "location": "경남/부산/울산",
-    "grade": "무관/미지정",
-    "deadline": "2026-10-08",
-    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=169568&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
-    "is_closed": false,
-    "created_at": "2026-10-02",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
-  },
-  {
     "id": "danuri_168236",
     "source": "다누리",
     "title": "성시가족센터 언어발달지도사(시간제) 채용 공고(상시채용)",
@@ -505,6 +505,21 @@
     "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=51695572",
     "is_closed": false,
     "created_at": "2026-10-01",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "danuri_169568",
+    "source": "다누리",
+    "title": "직원채용 재공고-대체인력(다문화가족 자녀 언어발달지도사)",
+    "organization": "울산 북구 가족센터",
+    "location": "경남/부산/울산",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-08",
+    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=169568&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
+    "is_closed": false,
+    "created_at": "2026-10-02",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
