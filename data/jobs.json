@@ -1,5 +1,20 @@
 [
   {
+    "id": "kteacher_35012",
+    "source": "국립국어원",
+    "title": "안양대학교 국제교류원 한국어강사 모집 공고 (상시 인력풀)]",
+    "organization": "안양대학교 국제교류원",
+    "location": "경기",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-30",
+    "url": "https://kteacher.korean.go.kr/jobsearch/35012",
+    "is_closed": false,
+    "created_at": "2026-10-15",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "kteacher_35003",
     "source": "국립국어원",
     "title": "덕성여자대학교 글로벌교육원 한국어 강사(신입 및 경력) 초빙 공고",
@@ -456,7 +471,7 @@
     "organization": "㈜인커넥트",
     "location": "온라인/재택",
     "grade": "무관/미지정",
-    "deadline": "2026-10-15",
+    "deadline": "2026-10-16",
     "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=51731174",
     "is_closed": false,
     "created_at": "2026-10-06",
