@@ -15,21 +15,6 @@
     "reviewed_at": null
   },
   {
-    "id": "kteacher_35003",
-    "source": "국립국어원",
-    "title": "덕성여자대학교 글로벌교육원 한국어 강사(신입 및 경력) 초빙 공고",
-    "organization": "덕성여자대학교 글로벌교육원",
-    "location": "전국/기타",
-    "grade": "무관/미지정",
-    "deadline": "2026-10-19",
-    "url": "https://kteacher.korean.go.kr/jobsearch/35003",
-    "is_closed": false,
-    "created_at": "2026-10-12",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
-  },
-  {
     "id": "kteacher_34994",
     "source": "국립국어원",
     "title": "메가스터디 ㈜아이비김영 김영평생교육원 운영 교·강사 초빙",
@@ -72,6 +57,21 @@
     "created_at": "2026-09-29",
     "status": "published",
     "kboard_uid": 26,
+    "reviewed_at": "2026-10-01 17:00:00"
+  },
+  {
+    "id": "kteacher_34938",
+    "source": "국립국어원",
+    "title": "숙명여자대학교 숙명글로벌어학원 시간제 강사 모집(기간 연장)",
+    "organization": "숙명여자대학교 숙명글로벌어학원",
+    "location": "전국/기타",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-30",
+    "url": "https://kteacher.korean.go.kr/jobsearch/34938",
+    "is_closed": false,
+    "created_at": "2026-09-23",
+    "status": "published",
+    "kboard_uid": 25,
     "reviewed_at": "2026-10-01 17:00:00"
   },
   {
@@ -471,10 +471,25 @@
     "organization": "㈜인커넥트",
     "location": "온라인/재택",
     "grade": "무관/미지정",
-    "deadline": "2026-10-19",
+    "deadline": "2026-10-20",
     "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=51777501",
     "is_closed": false,
     "created_at": "2026-10-14",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "kteacher_35003",
+    "source": "국립국어원",
+    "title": "덕성여자대학교 글로벌교육원 한국어 강사(신입 및 경력) 초빙 공고",
+    "organization": "덕성여자대학교 글로벌교육원",
+    "location": "전국/기타",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-19",
+    "url": "https://kteacher.korean.go.kr/jobsearch/35003",
+    "is_closed": false,
+    "created_at": "2026-10-12",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
@@ -507,21 +522,6 @@
     "created_at": "2026-09-30",
     "status": "published",
     "kboard_uid": 27,
-    "reviewed_at": "2026-10-01 17:00:00"
-  },
-  {
-    "id": "kteacher_34938",
-    "source": "국립국어원",
-    "title": "숙명여자대학교 숙명글로벌어학원 시간제 강사 모집",
-    "organization": "숙명여자대학교 숙명글로벌어학원",
-    "location": "전국/기타",
-    "grade": "무관/미지정",
-    "deadline": "2026-10-13",
-    "url": "https://kteacher.korean.go.kr/jobsearch/34938",
-    "is_closed": false,
-    "created_at": "2026-09-23",
-    "status": "published",
-    "kboard_uid": 25,
     "reviewed_at": "2026-10-01 17:00:00"
   },
   {
