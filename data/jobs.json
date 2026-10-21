@@ -1,15 +1,15 @@
 [
   {
-    "id": "kteacher_35012",
+    "id": "kteacher_35024",
     "source": "국립국어원",
-    "title": "안양대학교 국제교류원 한국어강사 모집 공고 (상시 인력풀)]",
+    "title": "안양대학교 국제교류원 한국어강사 모집 공고 (상시 인력풀)",
     "organization": "안양대학교 국제교류원",
     "location": "경기",
     "grade": "무관/미지정",
     "deadline": "2026-10-30",
-    "url": "https://kteacher.korean.go.kr/jobsearch/35012",
+    "url": "https://kteacher.korean.go.kr/jobsearch/35024",
     "is_closed": false,
-    "created_at": "2026-10-15",
+    "created_at": "2026-10-21",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
@@ -375,6 +375,21 @@
     "reviewed_at": null
   },
   {
+    "id": "ksif_9220000008300",
+    "source": "세종학당재단",
+    "title": "2026년 하반기 3차 세종학당 국외 파견 한국어 교원 선발 공고",
+    "organization": "세종학당재단",
+    "location": "해외",
+    "grade": "무관/미지정",
+    "deadline": "상시채용",
+    "url": "https://www.ksif.or.kr/cop/bbs/selectBoardArticle.do?nttId=9220000008300&bbsId=BBSMSTR_000000000001&pageIndex=1&menuNo=30101710",
+    "is_closed": false,
+    "created_at": "2026-10-21",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "danuri_169688",
     "source": "다누리",
     "title": "안산시다문화가족지원센터 공고 제2026 - 6호(러시아어 통번역지원사_육아휴직대체인력, 언어발달지도사)",
@@ -471,10 +486,25 @@
     "organization": "㈜인커넥트",
     "location": "온라인/재택",
     "grade": "무관/미지정",
-    "deadline": "2026-10-21",
+    "deadline": "2026-10-22",
     "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=51777501",
     "is_closed": false,
     "created_at": "2026-10-14",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "kteacher_35012",
+    "source": "국립국어원",
+    "title": "안양대학교 국제교류원 한국어강사 모집 공고 (상시 인력풀)]",
+    "organization": "안양대학교 국제교류원",
+    "location": "경기",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-30",
+    "url": "https://kteacher.korean.go.kr/jobsearch/35012",
+    "is_closed": false,
+    "created_at": "2026-10-15",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
