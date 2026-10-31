@@ -90,21 +90,6 @@
     "reviewed_at": null
   },
   {
-    "id": "kteacher_35024",
-    "source": "국립국어원",
-    "title": "안양대학교 국제교류원 한국어강사 모집 공고 (상시 인력풀)",
-    "organization": "안양대학교 국제교류원",
-    "location": "경기",
-    "grade": "무관/미지정",
-    "deadline": "2026-10-30",
-    "url": "https://kteacher.korean.go.kr/certif/jobsearch/35024",
-    "is_closed": false,
-    "created_at": "2026-10-21",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
-  },
-  {
     "id": "kteacher_34994",
     "source": "국립국어원",
     "title": "메가스터디 ㈜아이비김영 김영평생교육원 운영 교·강사 초빙",
@@ -135,19 +120,34 @@
     "reviewed_at": "2026-10-01 17:00:00"
   },
   {
-    "id": "kteacher_34938",
-    "source": "국립국어원",
-    "title": "숙명여자대학교 숙명글로벌어학원 시간제 강사 모집(기간 연장)",
-    "organization": "숙명여자대학교 숙명글로벌어학원",
+    "id": "kleocean_762",
+    "source": "한국어교육바다",
+    "title": "동서대학교 동서한국어교육원 한국어 강사 채용",
+    "organization": "동서대학교",
     "location": "전국/기타",
     "grade": "무관/미지정",
-    "deadline": "2026-10-30",
-    "url": "https://kteacher.korean.go.kr/certif/jobsearch/34938",
+    "deadline": "상시채용",
+    "url": "https://kleocean.com/?kboard_content_redirect=762",
     "is_closed": false,
-    "created_at": "2026-09-23",
-    "status": "published",
-    "kboard_uid": 25,
-    "reviewed_at": "2026-10-01 17:00:00"
+    "created_at": "2026-10-31",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "kleocean_761",
+    "source": "한국어교육바다",
+    "title": "아주대학교 국제교육센터 한국어 강사 초빙 (2026 겨울학기)",
+    "organization": "아주대학교",
+    "location": "전국/기타",
+    "grade": "무관/미지정",
+    "deadline": "상시채용",
+    "url": "https://kleocean.com/?kboard_content_redirect=761",
+    "is_closed": false,
+    "created_at": "2026-10-31",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
   },
   {
     "id": "kleocean_758",
@@ -568,6 +568,36 @@
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
+  },
+  {
+    "id": "kteacher_35024",
+    "source": "국립국어원",
+    "title": "안양대학교 국제교류원 한국어강사 모집 공고 (상시 인력풀)",
+    "organization": "안양대학교 국제교류원",
+    "location": "경기",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-30",
+    "url": "https://kteacher.korean.go.kr/certif/jobsearch/35024",
+    "is_closed": false,
+    "created_at": "2026-10-21",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "kteacher_34938",
+    "source": "국립국어원",
+    "title": "숙명여자대학교 숙명글로벌어학원 시간제 강사 모집(기간 연장)",
+    "organization": "숙명여자대학교 숙명글로벌어학원",
+    "location": "전국/기타",
+    "grade": "무관/미지정",
+    "deadline": "2026-10-30",
+    "url": "https://kteacher.korean.go.kr/certif/jobsearch/34938",
+    "is_closed": false,
+    "created_at": "2026-09-23",
+    "status": "published",
+    "kboard_uid": 25,
+    "reviewed_at": "2026-10-01 17:00:00"
   },
   {
     "id": "kteacher_35028",
