@@ -120,6 +120,21 @@
     "reviewed_at": "2026-10-01 17:00:00"
   },
   {
+    "id": "kleocean_776",
+    "source": "한국어교육바다",
+    "title": "부산외국어대학교 한국어문화교육원 한국어교사 추가 모집",
+    "organization": "부산외국어대학교",
+    "location": "경남/부산/울산",
+    "grade": "무관/미지정",
+    "deadline": "상시채용",
+    "url": "https://kleocean.com/?kboard_content_redirect=776",
+    "is_closed": false,
+    "created_at": "2026-11-02",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "kleocean_774",
     "source": "한국어교육바다",
     "title": "한동대학교 총무인사팀 한국어교실 강사 (일반계약직) 신규 채용",
@@ -325,6 +340,21 @@
     "url": "https://kleocean.com/?kboard_content_redirect=643",
     "is_closed": false,
     "created_at": "2026-08-19",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "kleocean_777",
+    "source": "한국어교육바다",
+    "title": "미국 페어팩스 카운티 공립학교(Fairfax County Public Schools) 한국어 교사 해외채용 | Fairfax County Public Schools: 27 Korean Language Teacher, HS - T",
+    "organization": "한국어 교육기관",
+    "location": "해외",
+    "grade": "무관/미지정",
+    "deadline": "상시채용",
+    "url": "https://kleocean.com/?kboard_content_redirect=777",
+    "is_closed": false,
+    "created_at": "2026-11-02",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
@@ -615,21 +645,6 @@
     "reviewed_at": null
   },
   {
-    "id": "kleocean_736",
-    "source": "한국어교육바다",
-    "title": "미국 스미스 대학교(Smith College) 한국어 강사 해외채용 | Smith College: Lecturer of Korean",
-    "organization": "한국어 교육기관",
-    "location": "해외",
-    "grade": "무관/미지정",
-    "deadline": "상시채용",
-    "url": "https://kleocean.com/?kboard_content_redirect=736",
-    "is_closed": false,
-    "created_at": "2026-10-24",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
-  },
-  {
     "id": "ksif_9220000008300",
     "source": "세종학당재단",
     "title": "2026년 하반기 3차 세종학당 국외 파견 한국어 교원 선발 공고",
@@ -715,6 +730,36 @@
     "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K141112610270025",
     "is_closed": false,
     "created_at": "2026-10-27",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "worknet_51871307",
+    "source": "워크넷",
+    "title": "[심야상담(심야교육)/송내역(부천)/Airbnb한국어상담]-에어비앤...",
+    "organization": "㈜인커넥트",
+    "location": "경기",
+    "grade": "무관/미지정",
+    "deadline": "2026-12-30",
+    "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=51871307",
+    "is_closed": false,
+    "created_at": "2026-10-31",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "kleocean_736",
+    "source": "한국어교육바다",
+    "title": "미국 스미스 대학교(Smith College) 한국어 강사 해외채용 | Smith College: Lecturer of Korean",
+    "organization": "한국어 교육기관",
+    "location": "해외",
+    "grade": "무관/미지정",
+    "deadline": "상시채용",
+    "url": "https://kleocean.com/?kboard_content_redirect=736",
+    "is_closed": false,
+    "created_at": "2026-10-24",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
