@@ -120,6 +120,21 @@
     "reviewed_at": "2026-10-01 17:00:00"
   },
   {
+    "id": "kleocean_778",
+    "source": "한국어교육바다",
+    "title": "[광교] 삼성전자 1:1 임직원 강의",
+    "organization": "한국어 교육기관",
+    "location": "전국/기타",
+    "grade": "무관/미지정",
+    "deadline": "상시채용",
+    "url": "https://kleocean.com/?kboard_content_redirect=778",
+    "is_closed": false,
+    "created_at": "2026-11-02",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "kleocean_776",
     "source": "한국어교육바다",
     "title": "부산외국어대학교 한국어문화교육원 한국어교사 추가 모집",
@@ -182,7 +197,7 @@
   {
     "id": "kleocean_771",
     "source": "한국어교육바다",
-    "title": "공주대학교 공통 국립 국제교류본부 한국어 강사 채용",
+    "title": "공주대학교 국제교류본부 한국어 강사 채용",
     "organization": "공주대학교",
     "location": "충남/대전/세종",
     "grade": "무관/미지정",
@@ -660,6 +675,21 @@
     "reviewed_at": null
   },
   {
+    "id": "danuri_169996",
+    "source": "다누리",
+    "title": "[긴급]2026년 보령시가족센터 이중언어강사 채용 재공고",
+    "organization": "보령시가족센터",
+    "location": "충남/대전/세종",
+    "grade": "무관/미지정",
+    "deadline": "2026-11-10",
+    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=169996&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
+    "is_closed": false,
+    "created_at": "2026-11-03",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "danuri_168236",
     "source": "다누리",
     "title": "성시가족센터 언어발달지도사(시간제) 채용 공고(상시채용)",
@@ -720,21 +750,6 @@
     "reviewed_at": null
   },
   {
-    "id": "worknet_K141112610270025",
-    "source": "워크넷",
-    "title": "[한동대학교]한국어교실(한국어강사/영어강사) 일반계약직 채용 공고",
-    "organization": "한동대학교",
-    "location": "경북/대구",
-    "grade": "무관/미지정",
-    "deadline": "2026-11-02",
-    "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K141112610270025",
-    "is_closed": false,
-    "created_at": "2026-10-27",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
-  },
-  {
     "id": "worknet_51871307",
     "source": "워크넷",
     "title": "[심야상담(심야교육)/송내역(부천)/Airbnb한국어상담]-에어비앤...",
@@ -745,6 +760,21 @@
     "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=51871307",
     "is_closed": false,
     "created_at": "2026-10-31",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "worknet_K141112610270025",
+    "source": "워크넷",
+    "title": "[한동대학교]한국어교실(한국어강사/영어강사) 일반계약직 채용 공고",
+    "organization": "한동대학교",
+    "location": "경북/대구",
+    "grade": "무관/미지정",
+    "deadline": "2026-11-02",
+    "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K141112610270025",
+    "is_closed": false,
+    "created_at": "2026-10-27",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
