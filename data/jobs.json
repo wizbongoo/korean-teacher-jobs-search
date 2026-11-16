@@ -105,21 +105,6 @@
     "reviewed_at": null
   },
   {
-    "id": "kteacher_34966",
-    "source": "국립국어원",
-    "title": "[1:1 온라인 화상 수업] 한국어브릿지 한국어교원 강사(튜터) 모집",
-    "organization": "한국어브릿지(KoreanBridge)",
-    "location": "온라인/재택",
-    "grade": "무관/미지정",
-    "deadline": "2026-11-15",
-    "url": "https://kteacher.korean.go.kr/certif/jobsearch/34966",
-    "is_closed": false,
-    "created_at": "2026-09-29",
-    "status": "published",
-    "kboard_uid": 26,
-    "reviewed_at": "2026-10-01 17:00:00"
-  },
-  {
     "id": "kleocean_838",
     "source": "한국어교육바다",
     "title": "건양대학교 3차모집 2026학년도 하반기 4쿼터 한국어교육센터 한국어강사 모집",
@@ -400,6 +385,21 @@
     "url": "https://kleocean.com/?kboard_content_redirect=804",
     "is_closed": false,
     "created_at": "2026-11-05",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "kleocean_840",
+    "source": "한국어교육바다",
+    "title": "미국 threattec 한국어 강사 해외채용 | Korean Associate Language Instructor",
+    "organization": "한국어 교육기관",
+    "location": "해외",
+    "grade": "무관/미지정",
+    "deadline": "상시채용",
+    "url": "https://kleocean.com/?kboard_content_redirect=840",
+    "is_closed": false,
+    "created_at": "2026-11-16",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
@@ -690,21 +690,6 @@
     "reviewed_at": null
   },
   {
-    "id": "kleocean_755",
-    "source": "한국어교육바다",
-    "title": "인도네시아 자카르타 한국학교 한국학 교사 해외채용 | [자카르타]2027학년도 자카르타한국학교 교원 채용 재공고",
-    "organization": "한국어 교육기관",
-    "location": "해외",
-    "grade": "무관/미지정",
-    "deadline": "상시채용",
-    "url": "https://kleocean.com/?kboard_content_redirect=755",
-    "is_closed": false,
-    "created_at": "2026-10-29",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
-  },
-  {
     "id": "ksif_9220000008300",
     "source": "세종학당재단",
     "title": "2026년 하반기 3차 세종학당 국외 파견 한국어 교원 선발 공고",
@@ -760,6 +745,36 @@
     "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=KF10322610270010",
     "is_closed": false,
     "created_at": "2026-10-27",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "kteacher_34966",
+    "source": "국립국어원",
+    "title": "[1:1 온라인 화상 수업] 한국어브릿지 한국어교원 강사(튜터) 모집",
+    "organization": "한국어브릿지(KoreanBridge)",
+    "location": "온라인/재택",
+    "grade": "무관/미지정",
+    "deadline": "2026-11-15",
+    "url": "https://kteacher.korean.go.kr/certif/jobsearch/34966",
+    "is_closed": false,
+    "created_at": "2026-09-29",
+    "status": "published",
+    "kboard_uid": 26,
+    "reviewed_at": "2026-10-01 17:00:00"
+  },
+  {
+    "id": "kleocean_755",
+    "source": "한국어교육바다",
+    "title": "인도네시아 자카르타 한국학교 한국학 교사 해외채용 | [자카르타]2027학년도 자카르타한국학교 교원 채용 재공고",
+    "organization": "한국어 교육기관",
+    "location": "해외",
+    "grade": "무관/미지정",
+    "deadline": "상시채용",
+    "url": "https://kleocean.com/?kboard_content_redirect=755",
+    "is_closed": false,
+    "created_at": "2026-10-29",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
