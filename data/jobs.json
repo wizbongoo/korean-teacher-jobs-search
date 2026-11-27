@@ -660,6 +660,21 @@
     "reviewed_at": null
   },
   {
+    "id": "ksif_9220000008300",
+    "source": "세종학당재단",
+    "title": "2026년 하반기 3차 세종학당 국외 파견 한국어 교원 선발 공고",
+    "organization": "세종학당재단",
+    "location": "해외",
+    "grade": "무관/미지정",
+    "deadline": "상시채용",
+    "url": "https://www.ksif.or.kr/cop/bbs/selectBoardArticle.do?nttId=9220000008300&bbsId=BBSMSTR_000000000001&pageIndex=1&menuNo=30101710",
+    "is_closed": false,
+    "created_at": "2026-10-21",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
     "id": "danuri_170312",
     "source": "다누리",
     "title": "2027년 무주군가족센터 프로그램 강사 모집 공고",
@@ -669,7 +684,7 @@
     "deadline": "상시채용",
     "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=170312&cpage=1&rows=10&condition=&keyword=한국어&area=&area_detail=&search_year=&search_month=&search_recruit_stat=",
     "is_closed": false,
-    "created_at": "2026-11-26",
+    "created_at": "2026-11-27",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
@@ -720,21 +735,6 @@
     "reviewed_at": null
   },
   {
-    "id": "danuri_165525",
-    "source": "다누리",
-    "title": "[채용공고]부산진구다문화가족지원센터 이중언어 학습지원 이중언어강사(베트남어, 중국어, 일본어) 채용 연장(2차) 공고",
-    "organization": "부산진구다문화가족지원센터",
-    "location": "해외",
-    "grade": "무관/미지정",
-    "deadline": "2026-12-11",
-    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=165525&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
-    "is_closed": false,
-    "created_at": "2026-02-27",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
-  },
-  {
     "id": "worknet_K131512611250003",
     "source": "워크넷",
     "title": "통영시가족센터한국어교육강사",
@@ -745,6 +745,21 @@
     "url": "https://www.work24.go.kr/wk/a/b/1500/empDetailAuthView.do?wantedAuthNo=K131512611250003",
     "is_closed": false,
     "created_at": "2026-11-25",
+    "status": "pending",
+    "kboard_uid": null,
+    "reviewed_at": null
+  },
+  {
+    "id": "danuri_165525",
+    "source": "다누리",
+    "title": "[채용공고]부산진구다문화가족지원센터 이중언어 학습지원 이중언어강사(베트남어, 중국어, 일본어) 채용 연장(2차) 공고",
+    "organization": "부산진구다문화가족지원센터",
+    "location": "해외",
+    "grade": "무관/미지정",
+    "deadline": "2026-12-11",
+    "url": "https://www.liveinkorea.kr/web/lay1/bbs/S1T10C29/A/6/view.do?article_seq=165525&cpage=1&rows=20&condition=&keyword=&area=&area_detail=&search_year=&search_month=&search_recruit_stat=02",
+    "is_closed": false,
+    "created_at": "2026-02-27",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
@@ -910,21 +925,6 @@
     "url": "https://kleocean.com/?kboard_content_redirect=797",
     "is_closed": false,
     "created_at": "2026-11-04",
-    "status": "pending",
-    "kboard_uid": null,
-    "reviewed_at": null
-  },
-  {
-    "id": "ksif_9220000008300",
-    "source": "세종학당재단",
-    "title": "2026년 하반기 3차 세종학당 국외 파견 한국어 교원 선발 공고",
-    "organization": "세종학당재단",
-    "location": "해외",
-    "grade": "무관/미지정",
-    "deadline": "상시채용",
-    "url": "https://www.ksif.or.kr/cop/bbs/selectBoardArticle.do?nttId=9220000008300&bbsId=BBSMSTR_000000000001&pageIndex=1&menuNo=30101710",
-    "is_closed": false,
-    "created_at": "2026-10-21",
     "status": "pending",
     "kboard_uid": null,
     "reviewed_at": null
